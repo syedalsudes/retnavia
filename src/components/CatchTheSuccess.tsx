@@ -8,20 +8,17 @@ import { ArrowRight, Sparkles } from "lucide-react";
 const CTA = () => {
   return (
     <section className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
-      {/* 1. Background Image using Next.js Image Component */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/wa.png" // Aapka wallpaper path
+          src="/wallpaper.png"
           alt="Success Background"
           fill
           className="object-cover"
           priority
         />
-        {/* Dark Overlay taake content nazar aaye */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-[1px]"></div>
       </div>
 
-      {/* 2. Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

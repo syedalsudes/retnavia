@@ -1,14 +1,15 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Ecosystem",
+    title: "Engineered DP World",
     category: "Web Development",
-    desc: "A high-performance scalable store built with Next.js and Headless CMS.",
+    desc: "Achieved 98% speed optimization and 100% security for international reach.",
     image: "/websitepic.png",
   },
   {
@@ -43,87 +44,124 @@ const projects = [
   },
 ];
 
+// Animation Variants for Container and Items
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Har project card ke beech 0.2s ka delay
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      // Yahan 'as const' add karein
+      ease: [0.16, 1, 0.3, 1] as const, 
+    },
+  },
+};
+
 const OurWork = () => {
   return (
-    <section className="bg-black py-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* 1. Header Section - Left Aligned */}
-<div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+    <section className="bg-gradient-to-br from-[#120b1e] via-[#0f0a14] to-black py-32 px-6 md:px-12 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/20 blur-[120px] rounded-full pointer-events-none" />
+
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+        className="max-w-7xl mx-auto relative z-10"
+      >
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
           <div className="max-w-2xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-2 mb-4"
-            >
-              <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-              <span className="text-purple-500 font-bold uppercase tracking-[0.3em] text-[10px]">Case Studies</span>
+            <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]" />
+              <span className="text-purple-400 font-black uppercase tracking-[0.4em] text-[9px]">Portfolio</span>
             </motion.div>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-white text-5xl md:text-7xl font-bold tracking-tighter leading-none"
+            <motion.h2 
+              variants={itemVariants}
+              className="text-white text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase"
             >
-              Our Work. <br />
-              <span className="text-white/20 italic font-light">Digital Masterpieces.</span>
-            </motion.h1>
+              Selected <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 italic font-light">Works.</span>
+            </motion.h2>
           </div>
           
           <motion.p 
-             initial={{ opacity: 0 }}
-             whileInView={{ opacity: 1 }}
-             className="text-gray-500 text-sm max-w-[280px] leading-relaxed border-l border-white/10 pl-6"
+             variants={itemVariants}
+             className="text-gray-400 text-sm max-w-[300px] leading-relaxed font-medium border-l border-white/10 pl-8 mb-4"
           >
-            We blend aesthetic excellence with technical durability to build products that last.
+            We partner with global brands to engineer high-performance digital gateways.
           </motion.p>
         </div>
 
-        
-        {/* 2. Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Projects Grid */}
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
           {projects.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative bg-[#0A0A0A] border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-500"
+              variants={itemVariants}
+              whileHover={{ y: -10 }} // Subtle lift on hover
+              className="group cursor-pointer"
             >
               {/* Image Container */}
-              <div className="relative h-64 w-full overflow-hidden">
-                <img
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2.5rem] bg-white/5 shadow-2xl transition-all duration-700 group-hover:shadow-purple-500/20">
+                <Image
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+                
+                {/* Clean Hover Overlay */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                   <motion.div 
+                     initial={{ scale: 0, rotate: -45 }}
+                     whileHover={{ scale: 1.1, rotate: 0 }}
+                     className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-black"
+                   >
+                      <ArrowUpRight size={32} />
+                   </motion.div>
+                </div>
               </div>
 
-              {/* Content */}
-              <div className="p-8">
-                <span className="text-purple-500 text-xs font-bold uppercase tracking-widest">
-                  {item.category}
-                </span>
-                <h3 className="text-white text-xl font-semibold mt-2 group-hover:text-purple-400 transition-colors">
+              {/* Text Content */}
+              <div className="mt-10 px-2">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-purple-400 text-[10px] font-black uppercase tracking-widest">
+                    {item.category}
+                  </span>
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: 32 }}
+                    className="h-[1px] bg-white/20" 
+                  />
+                </div>
+                
+                <h3 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4 group-hover:text-purple-400 transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="text-gray-400 text-sm mt-3 leading-relaxed">
+                
+                <p className="text-gray-400 text-lg font-light leading-relaxed max-w-md">
                   {item.desc}
                 </p>
-                
-                {/* Explore Link */}
-                <div className="mt-6 flex items-center gap-2 text-white text-xs font-bold uppercase tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  View Project <div className="h-[1px] w-8 bg-purple-500"></div>
-                </div>
               </div>
             </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

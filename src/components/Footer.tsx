@@ -2,34 +2,43 @@
 
 import React from "react";
 import { Instagram, Twitter, Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
+import Link from "next/link"; // Next.js Link use karna behtar hai
 import { motion } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // Aapki provided navLinks array
+  const navLinks = [
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Our Portfolio", href: "/portfolio" },
+    { name: "Contact", href: "/contact" },
+    { name: "Blog", href: "/blog" },
+  ];
+
   return (
     <footer className="bg-[#030303] text-white pt-24 pb-12 px-6 border-t border-white/[0.05] relative overflow-hidden">
       
-      {/* Background Decorative Gradient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10">
         
-        {/* 1. Navigation with Premium Hover */}
         <nav className="flex flex-wrap justify-center gap-6 md:gap-14 mb-20">
-          {["Services", "Our Work", "About", "Blog", "Career", "Privacy"].map((link) => (
-            <a 
-              key={link} 
-              href={`#${link.toLowerCase().replace(" ", "-")}`} 
+          {navLinks.map((link) => (
+            <Link 
+              key={link.name} 
+              href={link.href} 
               className="group relative text-gray-500 hover:text-white text-[11px] font-black uppercase tracking-[0.3em] transition-colors duration-300"
             >
-              {link}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
+              <span className="relative">
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-purple-500 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              </span>
+            </Link>
           ))}
         </nav>
 
-        {/* 2. Middle Section: Massive Branding Text */}
         <div className="w-full text-center mb-20 relative">
           <h2 className="text-[15vw] font-black tracking-[-0.08em] leading-none select-none opacity-[0.03] text-white">
             retnavia
@@ -46,7 +55,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* 3. Social Icons - Minimalist Circles */}
+        {/* 3. Social Icons */}
         <div className="flex items-center gap-4 mb-20">
           {[
             { icon: <Instagram size={18} />, link: "#" },
@@ -74,13 +83,14 @@ const Footer = () => {
 
           <div className="flex gap-8 items-center">
             {["Terms", "Policy"].map(item => (
-              <a key={item} href="#" className="text-gray-600 hover:text-white text-[10px] font-bold uppercase tracking-[0.2em] transition-colors">
+              <Link key={item} href="#" className="text-gray-600 hover:text-white text-[10px] font-bold uppercase tracking-[0.2em] transition-colors">
                 {item}
-              </a>
+              </Link>
             ))}
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="ml-4 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group hover:border-purple-500 transition-colors"
+              aria-label="Back to top"
             >
               <ArrowUpRight size={14} className="text-gray-500 group-hover:text-purple-500 transition-colors" />
             </button>

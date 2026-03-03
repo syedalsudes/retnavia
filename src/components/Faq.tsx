@@ -5,21 +5,46 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle } from "lucide-react";
 
 const faqs = [
-  { q: "How do you ensure high-quality UI/UX?", a: "We follow a research-driven process, creating wireframes and prototypes before final design to ensure usability and aesthetic appeal." },
-  { q: "Which technologies do you use for web apps?", a: "We specialize in Next.js, React, Tailwind CSS, and robust backend systems like Node.js or Python." },
-  { q: "Do you provide post-launch support?", a: "Yes, we offer comprehensive maintenance and support packages to keep your platform updated and secure." },
-  { q: "Can you handle large-scale enterprise projects?", a: "Absolutely. Our architecture is built for scalability, handling millions of requests with zero downtime." },
-  { q: "What is your typical project timeline?", a: "Usually, a standard project takes 4 to 12 weeks depending on complexity and specific requirements." },
-  { q: "Do you provide SEO services?", a: "Yes, all our websites are built with SEO best practices to ensure high ranking and visibility." },
-  { q: "How do you handle data security?", a: "We implement industry-standard encryption, secure API integrations, and regular security audits." },
-  { q: "Is the design mobile-responsive?", a: "100%. We use a mobile-first approach so your site looks perfect on every screen size." },
-  { q: "Can you redesign my existing website?", a: "Yes, we specialize in modernizing legacy systems with contemporary UI and faster tech stacks." },
-  { q: "Do you offer graphic design services?", a: "Yes, our team handles everything from brand identity and logos to complex digital illustrations." },
-  { q: "How do we communicate during the project?", a: "We use Slack, Jira, and weekly Zoom calls to keep you updated on every milestone." },
-  { q: "Do you integrate third-party APIs?", a: "Yes, we can integrate payment gateways, CRMs, and any custom API your business needs." },
-  { q: "What is your pricing model?", a: "We offer both fixed-price projects and dedicated monthly resource models tailored to your budget." },
-  { q: "Who owns the source code?", a: "Once the project is completed and paid for, you have full ownership of the source code and IP." },
-  { q: "How do I get started?", a: "Simply click the 'Get a Consultant' button or use our contact form to schedule an intro call." },
+  { 
+    q: "How long will it take to launch my project?", 
+    a: "Usually, a standard project takes 4 to 12 weeks. We follow an agile process to ensure you get a functional 'Version 1' as quickly as possible without compromising quality." 
+  },
+  { 
+    q: "How much will my project cost?", 
+    a: "Pricing depends on the features and complexity. We offer both fixed-price packages for defined scopes and flexible monthly models for evolving projects." 
+  },
+  { 
+    q: "Will my website/app look good on mobile phones?", 
+    a: "100%. We follow a 'Mobile-First' approach, ensuring your digital product looks stunning and works smoothly on every screen size, from iPhones to large monitors." 
+  },
+  { 
+    q: "I have a slow existing site. Can you make it faster?", 
+    a: "Yes, we specialize in modernizing legacy systems using Next.js and optimized cloud infra. We focus on achieving 90+ Google PageSpeed scores to improve your user experience." 
+  },
+  { 
+    q: "Who will own the source code after completion?", 
+    a: "You do. Once the final payment is cleared, you have full 100% ownership of the source code, intellectual property, and all digital assets." 
+  },
+  { 
+    q: "How will I know what's happening with my project?", 
+    a: "Transparency is our priority. We use Slack for daily chat, Jira for task tracking, and schedule weekly Zoom demos so you can see the progress in real-time." 
+  },
+  { 
+    q: "Can you help my business show up on Google (SEO)?", 
+    a: "Absolutely. We don't just code; we build for growth. Every project follows technical SEO best practices (SSR, Meta Tags, Schema) to help you rank higher from day one." 
+  },
+  { 
+    q: "What happens if something breaks after the launch?", 
+    a: "We don't just 'launch and leave.' We provide comprehensive post-launch support and maintenance packages to keep your platform secure and updated as your business grows." 
+  },
+  { 
+    q: "Can you integrate my existing tools (Payment, CRM)?", 
+    a: "Yes, we can seamlessly integrate any third-party API, including payment gateways (Stripe, PayPal), CRMs (HubSpot, Salesforce), or custom business tools." 
+  },
+  { 
+    q: "Is my data and my customers' data safe with you?", 
+    a: "Security is built into our code. We implement industry-standard encryption, secure API protocols, and regular audits to protect your business from any vulnerabilities." 
+  }
 ];
 
 const FAQ = () => {
