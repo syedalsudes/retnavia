@@ -1,0 +1,112 @@
+// data/servicesData.ts
+
+export const servicesData = {
+  "web-development": {
+    title: "Web Development",
+    subtitle: "Building scalable, elite-level platforms for global brands.",
+    description: "We don't just build websites; we engineer digital ecosystems. From high-performance corporate portals to complex web architectures, our solutions are designed for zero-latency, unbreakable security, and maximum user engagement.",
+    mainImage: "/websitepic.png", // Replace with your actual image path
+    capabilities: ["Custom Web Applications", "Enterprise CMS", "Progressive Web Apps (PWA)", "API Development & Integration"],
+    techStack: ["Next.js", "React", "Node.js", "TypeScript", "AWS", "PostgreSQL"],
+  },
+  "ecommerce": {
+    title: "Ecommerce Development",
+    subtitle: "High-converting storefronts that drive sales and scale seamlessly.",
+    description: "We create immersive shopping experiences tailored to your brand. Our bespoke e-commerce solutions focus on lightning-fast checkouts, seamless payment integrations, and robust inventory management to maximize your ROI.",
+    mainImage: "/ecommerce.png",
+    capabilities: ["Custom Storefronts", "Headless Commerce", "Payment Gateway Integration", "Inventory Management"],
+    techStack: ["Shopify Plus", "WooCommerce", "Next.js Commerce", "Stripe", "Medusa.js"],
+  },
+  "erp": {
+    title: "ERP Software",
+    subtitle: "Centralize your operations with intelligent resource planning.",
+    description: "Streamline your business processes with custom-built ERP solutions. We design centralized dashboards that connect your finance, HR, supply chain, and CRM, giving you real-time data and complete control over your enterprise.",
+    mainImage: "/erp.png",
+    capabilities: ["Custom Dashboards", "Workflow Automation", "Data Migration", "Module Integration"],
+    techStack: ["React", "Python", "Django", "PostgreSQL", "Docker", "AWS"],
+  },
+  "digital-marketing": {
+    title: "Digital Marketing",
+    subtitle: "Data-driven strategies to dominate your digital landscape.",
+    description: "We turn clicks into clients. Our comprehensive digital marketing campaigns are built on deep market research, predictive analytics, and aggressive growth strategies to ensure your brand reaches the right audience at the right time.",
+    mainImage: "/digital-marketing.png",
+    capabilities: ["Growth Hacking", "PPC Campaigns", "Email Marketing", "Conversion Rate Optimization"],
+    techStack: ["Google Analytics 4", "HubSpot", "Mailchimp", "Google Ads", "Looker Studio"],
+  },
+  "seo": {
+    title: "Search Engine Optimization",
+    subtitle: "Rank higher, drive organic traffic, and own the search results.",
+    description: "Visibility is everything. Our elite SEO strategies cover technical audits, on-page optimization, and high-authority link building to push your platform to the top of search engines and keep it there.",
+    mainImage: "/seo.png",
+    capabilities: ["Technical SEO", "Keyword Strategy", "Content Optimization", "Backlink Building"],
+    techStack: ["Ahrefs", "SEMrush", "Google Search Console", "Screaming Frog", "Yoast"],
+  },
+  "ai": {
+    title: "Artificial Intelligence",
+    subtitle: "Automate and innovate with custom AI and Machine Learning solutions.",
+    description: "Step into the future with AI. We integrate custom-trained Large Language Models (LLMs), automated chatbots, and predictive algorithms into your existing systems to reduce manual work and hyper-personalize user experiences.",
+    mainImage: "/ai.png",
+    capabilities: ["Custom LLM Integration", "AI Chatbots", "Predictive Analytics", "Process Automation"],
+    techStack: ["Python", "OpenAI API", "TensorFlow", "PyTorch", "LangChain"],
+  },
+  "mobile-app": {
+    title: "Mobile App Development",
+    subtitle: "Native and cross-platform mobile experiences that captivate users.",
+    description: "We build award-winning mobile applications that sit comfortably on your users' home screens. Focused on intuitive UI and zero-latency interactions, our apps are built to scale to millions of downloads.",
+    mainImage: "/appdev.png",
+    capabilities: ["iOS App Development", "Android App Development", "Cross-Platform Solutions", "App Store Optimization"],
+    techStack: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
+  },
+  "ui-ux": {
+    title: "UI/UX Design",
+    subtitle: "Crafting intuitive digital experiences that convert.",
+    description: "Design is not just what it looks like; it's how it works. Our design philosophy merges stunning visual aesthetics with deep psychological insights to create user journeys that feel frictionless and natural.",
+    mainImage: "/uiux.png",
+    capabilities: ["Wireframing & Prototyping", "User Journey Mapping", "Design Systems", "Usability Testing"],
+    techStack: ["Figma", "Framer", "Adobe XD", "Miro", "Webflow"],
+  },
+  "smm": {
+    title: "Social Media Marketing",
+    subtitle: "Building communities and turning followers into brand advocates.",
+    description: "We give your brand a voice. From viral TikTok campaigns to professional LinkedIn outreach, we create highly engaging social media strategies that build brand loyalty and drive meaningful interactions.",
+    mainImage: "/smm.png",
+    capabilities: ["Social Strategy", "Community Management", "Influencer Marketing", "Paid Social Ads"],
+    techStack: ["Meta Business Suite", "Hootsuite", "Buffer", "Sprout Social", "TikTok Ads"],
+  },
+  "branding": {
+    title: "Digital Branding & Creatives",
+    subtitle: "Defining the visual DNA of the next generation of tech.",
+    description: "Your brand is your promise to your customer. We craft timeless brand identities, from modern logos and typography to comprehensive brand guidelines, ensuring your business stands out in a crowded market.",
+    mainImage: "/branding.png",
+    capabilities: ["Brand Identity Design", "Logo Creation", "Brand Guidelines", "Visual Strategy"],
+    techStack: ["Adobe Illustrator", "Photoshop", "InDesign", "CorelDRAW", "Figma"],
+  },
+  "animation": {
+    title: "2D/3D Video Animation",
+    subtitle: "Bringing ideas to life through cinematic motion and animation.",
+    description: "Simplify complex ideas through captivating animations. Whether it's a 2D explainer video for your SaaS product or a high-fidelity 3D product showcase, our animations are designed to grab attention instantly.",
+    mainImage: "/animation.png",
+    capabilities: ["2D Explainer Videos", "3D Product Modeling", "Motion Graphics", "Character Animation"],
+    techStack: ["After Effects", "Blender", "Cinema 4D", "Maya", "Lottie"],
+  },
+  "video-editing": {
+    title: "Video Editing",
+    subtitle: "Polished, dynamic, and engaging storytelling for the digital age.",
+    description: "We transform raw footage into compelling stories. From fast-paced social media reels to corporate documentaries, our post-production team ensures perfect pacing, color grading, and sound design.",
+    mainImage: "/video-editing.png",
+    capabilities: ["Commercial Editing", "Social Media Reels", "Color Grading", "Sound Mixing"],
+    techStack: ["Premiere Pro", "DaVinci Resolve", "Final Cut Pro", "Audition"],
+  },
+  "graphic-design": {
+    title: "Graphic Design Services",
+    subtitle: "Striking visual assets that communicate your message clearly.",
+    description: "Visuals that speak louder than words. We create high-impact marketing collateral, digital banners, packaging designs, and presentation decks that maintain your brand's excellence across all touchpoints.",
+    mainImage: "/graphic-design.png",
+    capabilities: ["Marketing Collateral", "Digital Banners", "Packaging Design", "Pitch Decks"],
+    techStack: ["Photoshop", "Illustrator", "Canva Pro", "InDesign"],
+  }
+};
+
+export type ServiceKey = keyof typeof servicesData;
+
+

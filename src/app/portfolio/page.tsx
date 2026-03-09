@@ -1,210 +1,148 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const projects = [
+const portfolioItems = [
   {
-    title: "DP World",
-    category: "Web Engineering",
-    impact: "98% Performance",
-    desc: "Achieved elite-level speed optimization and enterprise-grade security for global logistics.",
-    services: ["Next.js", "Security Audit", "Cloud Hosting"],
-    bg: "/websitepic.png",
+    id: 1,
+    title: "DP World Logistics",
+    category: "Web",
+    img: "/websitepic.png",
+    size: "md:col-span-2 md:row-span-2",
+    desc: "Enterprise-grade supply chain solution."
   },
   {
-    title: "Fintech App",
-    category: "Mobile Solutions",
-    impact: "Biometric Secure",
-    desc: "A high-fidelity banking experience focused on real-time transactions and zero-latency UI.",
-    services: ["React Native", "Fintech API", "AWS"],
-    bg: "/appdev.png",
+    id: 2,
+    title: "Fintech Mobile App",
+    category: "App",
+    img: "/appdev.png",
+    size: "md:col-span-1 md:row-span-2",
+    desc: "Secure biometric banking."
   },
   {
-    title: "SaaS Growth",
-    category: "SEO & Strategy",
-    impact: "300% Traffic",
-    desc: "Strategic search engine dominance for global platforms through data-driven content.",
-    services: ["Organic SEO", "Market Analysis", "Content"],
-    bg: "/seo.png",
+    id: 3,
+    title: "Retnavia Branding",
+    category: "Graphics",
+    img: "/branding.png",
+    size: "md:col-span-1 md:row-span-1",
+    desc: "Modern visual identity."
   },
   {
-    title: "Retnavia",
-    category: "Brand Identity",
-    impact: "Visual DNA",
-    desc: "Crafting modern visual languages and brand guidelines for the next generation of tech.",
-    services: ["Logo Design", "UI/UX Design", "Guidelines"],
-    bg: "/branding.png",
+    id: 4,
+    title: "AI Automate Bot",
+    category: "AI",
+    img: "/ai.png",
+    size: "md:col-span-1 md:row-span-1",
+    desc: "Custom LLM integration."
   },
   {
-    title: "AI Automate",
-    category: "AI Solutions",
-    impact: "24/7 Support",
-    desc: "Integrating custom-trained LLMs to automate complex customer journeys seamlessly.",
-    services: ["Custom LLMs", "Automation", "Python"],
-    bg: "/ai.png",
+    id: 5,
+    title: "SaaS Marketing",
+    category: "Web",
+    img: "/seo.png",
+    size: "md:col-span-2 md:row-span-1", 
+    desc: "300% Growth in organic traffic."
   }
 ];
 
-const ProjectCard = ({ project, index }: { project: typeof projects[0], index: number }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
+const filters = ["All", "Web", "App", "Graphics", "AI"];
 
-  const y = useTransform(scrollYProgress, [0, 1], [-50, 50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.95, 1]);
+const ModernPortfolioPage = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
 
-  return (
-    <section ref={ref} className="h-[110vh] flex items-center justify-center sticky top-0 bg-black">
-      <motion.div 
-        style={{ opacity, scale }}
-        className="relative w-[92%] h-[85vh] rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl"
-      >
-        <Image
-          src={project.bg}
-          alt={project.title}
-          fill
-          className="object-cover brightness-[0.4]"
-        />
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-
-        <div className="absolute inset-0 p-10 md:p-20 flex flex-col justify-end">
-          <motion.div style={{ y }} className="w-full">
-            <div className="flex items-center gap-3 mb-8">
-               <span className="text-purple-500 text-[10px] font-bold uppercase tracking-[0.3em]">
-                 {project.category}
-               </span>
-               <div className="w-8 h-[1px] bg-white/20" />
-               <span className="text-white/30 text-[10px] font-mono">0{index + 1}</span>
-            </div>
-
-            <h2 className="text-white text-6xl md:text-8xl font-medium tracking-tighter mb-8 leading-[0.9]">
-              {project.title}
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
-              <div className="md:col-span-5">
-                <p className="text-gray-400 text-sm md:text-base leading-relaxed font-light">
-                  {project.desc}
-                </p>
-              </div>
-
-              <div className="md:col-span-4 flex gap-8">
-                <div>
-                  <p className="text-[9px] text-white/30 uppercase tracking-widest mb-3">Capabilities</p>
-                  <ul className="text-white/70 text-[11px] space-y-1 font-light">
-                    {project.services.map((s) => <li key={s}>+ {s}</li>)}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="md:col-span-3 text-right">
-                <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">Results</p>
-                <p className="text-3xl font-light italic text-white">{project.impact}</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.div>
-    </section>
+  const filteredItems = portfolioItems.filter((item) => 
+    activeFilter === "All" ? true : item.category === activeFilter
   );
-};
-
-const OurWorkScrollPage = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   return (
-    <main className="bg-black selection:bg-purple-500/30">
-
-      {/* --- RE-CRAFTED HERO SECTION --- */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
-        {/* Background Image Container */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/portfolio.png" 
-            alt="Work Portfolio Background"
-            fill
-            className="object-cover opacity-60 grayscale-[0.5] contrast-[1.1]"
-            priority
-          />
-          {/* Overlay for better text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black" />
-        </div>
-
-        {/* Content Container */}
-        <div className="relative z-10 max-w-7xl px-8 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex items-center gap-4 mb-8"
+    <main className="bg-black min-h-screen text-white pt-24 pb-20 px-6 md:px-16 selection:bg-purple-500/30">
+      
+      {/* --- HEADER --- */}
+      <div className="max-w-[1400px] mx-auto mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
+        <div className="max-w-2xl">
+          <motion.p 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="text-purple-500 font-mono text-xs uppercase tracking-[0.4em] mb-4"
           >
-            <div className="w-10 h-[1px] bg-purple-500" />
-            <span className="text-white/60 text-[10px] uppercase tracking-[0.5em] font-medium">Selected Works 2026</span>
-          </motion.div>
-
+            Portfolio / 2024-25
+          </motion.p>
           <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-white text-[12vw] md:text-[9vw] font-light leading-none tracking-tighter"
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-8xl font-light tracking-tighter leading-[0.85]"
           >
-            CRAFTING <br /> 
-            <span className="italic font-serif text-purple-400/90">Impact.</span>
+            Proof in <br /> <span className="italic font-serif text-zinc-500">Performance.</span>
           </motion.h1>
-          
-          {/* Subtle scroll indicator */}
-          <motion.div 
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ delay: 1, duration: 1 }}
-             className="absolute -bottom-32 md:-bottom-20 left-8"
-          >
-             <p className="text-white/20 text-[9px] uppercase tracking-[0.4em] rotate-90 origin-left">Scroll to explore</p>
-          </motion.div>
         </div>
-      </section>
-      {/* --- END HERO SECTION --- */}
 
-      {/* Projects List */}
-      <div className="relative">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} index={index} />
-        ))}
+        {/* --- FILTER TABS --- */}
+        <div className="flex bg-zinc-900/50 p-1 rounded-full border border-white/5 backdrop-blur-md">
+          {filters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setActiveFilter(f)}
+              className={`px-5 py-2 rounded-full text-[10px] uppercase tracking-widest transition-all ${
+                activeFilter === f ? "bg-white text-black" : "text-white/40 hover:text-white"
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Modern Compact CTA */}
-      <section className="h-[80vh] flex flex-col items-center justify-center bg-black relative">
-        <div className="text-center group">
-          <p className="text-white/30 text-[10px] uppercase tracking-[0.6em] mb-10 group-hover:text-purple-500 transition-colors">
-            Have a vision?
-          </p>
-          
-          <h2 className="text-white text-5xl md:text-8xl font-light tracking-tighter mb-16">
-            Let’s build <span className="italic font-serif">something</span> real.
-          </h2>
+      {/* --- BENTO GRID --- */}
+      <div className="max-w-[1400px] mx-auto">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[280px]">
+          <AnimatePresence mode="popLayout">
+            {filteredItems.map((item) => (
+              <motion.div
+                key={item.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className={`relative group rounded-[2rem] overflow-hidden border border-white/10 ${item.size}`}
+              >
+                {/* Image Component */}
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.3] group-hover:grayscale-0"
+                />
+                
+                {/* Minimal Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
+                  <span className="text-purple-400 text-[9px] uppercase tracking-widest mb-2 font-bold italic">
+                    {item.category}
+                  </span>
+                  <h3 className="text-2xl font-medium mb-2">{item.title}</h3>
+                  <p className="text-white/50 text-xs font-light max-w-[200px] leading-relaxed">
+                    {item.desc}
+                  </p>
+                  
+                  {/* Small "Explore" link */}
+                  <div className="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/80">
+                    <div className="w-6 h-[1px] bg-white/30" />
+                    View Case Study
+                  </div>
+                </div>
 
-          <motion.a
-            href="mailto:discover@retnavia.com"
-            whileHover={{ scale: 1.05 }}
-            className="px-10 py-5 rounded-full border border-white/10 text-white text-[11px] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-500"
-          >
-            Start a Conversation
-          </motion.a>
-        </div>
-        
-        <div className="absolute bottom-12 text-white/20 text-[9px] uppercase tracking-widest">
-          © 2026 Retnavia Studio
-        </div>
-      </section>
+                {/* Default Bottom-Left Badge (Visible without hover) */}
+                <div className="absolute bottom-6 left-6 group-hover:opacity-0 transition-opacity">
+                   <p className="text-[10px] bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-white/70 tracking-tighter">
+                     {item.title}
+                   </p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
     </main>
   );
 };
 
-export default OurWorkScrollPage;
+export default ModernPortfolioPage;
