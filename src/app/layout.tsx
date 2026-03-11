@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Anta } from "next/font/google"; 
+import "./globals.css";
+import MouseTrail from "@/components/MouseTrail";
+
+const anta = Anta({ 
+  weight: '400', 
+  subsets: ["latin"],
+  variable: '--font-anta',
+  display: 'swap',
+  adjustFontFallback: false,
+});
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +25,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
-
 };
 
 export default function RootLayout({
@@ -25,7 +34,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="antialiased bg-black selection:bg-purple-500/30">
+      <body className={`${anta.variable} font-sans bg-background text-foreground`}>
+        <MouseTrail />
         <Navbar />
         {children}
         <Footer />

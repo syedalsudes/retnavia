@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, HelpCircle } from "lucide-react";
+import { Plus, HelpCircle } from "lucide-react";
 
 const faqs = [
   { 
@@ -51,23 +51,21 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-[#030303] py-32 px-6 md:px-12 relative overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <section className="bg-background py-32 px-6 md:px-12 relative overflow-hidden">
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary-glow/10 rounded-full blur-[120px] pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
         
-        {/* Left Side: Title & Description */}
         <div className="lg:sticky lg:top-40 h-fit">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="flex items-center gap-3 mb-8"
           >
-            <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                <HelpCircle size={18} className="text-purple-500" />
+            <div className="p-2 rounded-lg bg-primary/10 border border-white/[0.1]">
+                <HelpCircle size={18} className="text-primary" />
             </div>
-            <span className="text-purple-500 uppercase tracking-[0.4em] text-[10px] font-bold">
+            <span className="text-primary uppercase tracking-[0.4em] text-[10px] font-bold">
               Support Center
             </span>
           </motion.div>
@@ -76,17 +74,17 @@ const FAQ = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-white text-5xl md:text-7xl font-bold leading-[1.1] tracking-tighter mb-8"
+            className="text-foreground text-5xl md:text-7xl font-bold leading-[1.1] tracking-tighter mb-8"
           >
             Got questions? <br />
-            <span className="text-white/20 italic font-light">We have answers.</span>
+            <span className="text-foreground/20 italic font-light">We have answers.</span>
           </motion.h2>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-md font-light"
+            className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-md font-light"
           >
             Everything you need to know about our process, technology, and how we help your brand grow in the digital space.
           </motion.p>
@@ -95,21 +93,19 @@ const FAQ = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mt-12 p-6 rounded-2xl bg-white/[0.02] border border-white/5 inline-block"
+            className="mt-12 p-6 rounded-2xl bg-overlay border border-border inline-block"
           >
-            <p className="text-white text-sm font-medium">Still confused?</p>
-            <button className="mt-2 text-purple-400 text-sm font-bold hover:text-purple-300 transition-colors flex items-center gap-2">
+            <p className="text-foreground text-sm font-medium">Still confused?</p>
+            <button className="mt-2 text-primary text-sm font-bold hover:text-primary-glow transition-colors flex items-center gap-2">
                 Chat with our team <Plus size={14} />
             </button>
           </motion.div>
         </div>
 
-        {/* Right Side: Scrollable FAQ Box */}
         <div className="relative group">
-          {/* Outer Border Glow */}
-          <div className="absolute -inset-1 bg-gradient-to-b from-purple-500/20 to-transparent rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <div className="absolute -inset-1 bg-gradient-to-b from-primary/20 to-transparent rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
           
-          <div className="relative bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl">
+          <div className="relative bg-background/80 backdrop-blur-xl border border-border rounded-[2rem] overflow-hidden shadow-2xl">
             <div className="h-[650px] overflow-y-auto p-8 custom-scrollbar">
               <div className="space-y-3">
                 {faqs.map((faq, index) => (
@@ -120,23 +116,23 @@ const FAQ = () => {
                     transition={{ delay: index * 0.05 }}
                     className={`rounded-2xl border transition-all duration-300 ${
                       openIndex === index 
-                        ? 'bg-white/[0.05] border-white/20 shadow-inner' 
-                        : 'bg-transparent border-white/5 hover:border-white/10'
+                        ? 'bg-border border-border/50 shadow-inner' 
+                        : 'bg-transparent border-border hover:border-border/50'
                     }`}
                   >
                     <button
                       onClick={() => setOpenIndex(openIndex === index ? null : index)}
                       className="w-full flex justify-between items-center text-left p-5 group/btn"
                     >
-                      <span className={`text-base md:text-lg font-semibold tracking-tight transition-colors ${openIndex === index ? 'text-white' : 'text-gray-400 group-hover/btn:text-white'}`}>
+                      <span className={`text-base md:text-lg font-semibold tracking-tight transition-colors ${openIndex === index ? 'text-foreground' : 'text-muted-foreground group-hover/btn:text-foreground'}`}>
                         {faq.q}
                       </span>
                       <div className={`flex-shrink-0 ml-4 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500 ${
                         openIndex === index 
-                          ? 'bg-purple-500 border-purple-500 rotate-[135deg] shadow-[0_0_15px_rgba(168,85,247,0.5)]' 
-                          : 'border-white/20'
+                          ? 'bg-primary border-primary rotate-[135deg] shadow-[0_0_15px_var(--primary-glow)]' 
+                          : 'border-border'
                       }`}>
-                        <Plus size={16} className="text-white" />
+                        <Plus size={16} className={openIndex === index ? "text-background" : "text-foreground"} />
                       </div>
                     </button>
 
@@ -149,7 +145,7 @@ const FAQ = () => {
                           transition={{ duration: 0.4, ease: "circOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 pb-6 text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 mt-1">
+                          <div className="px-5 pb-6 text-muted-foreground text-sm md:text-base leading-relaxed border-t border-border pt-4 mt-1">
                             {faq.a}
                           </div>
                         </motion.div>

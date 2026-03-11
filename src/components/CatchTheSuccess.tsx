@@ -16,7 +16,7 @@ const CTA = () => {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-[1px]"></div>
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl">
@@ -24,10 +24,10 @@ const CTA = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-500/30 px-4 py-1.5 rounded-full mb-8"
+          className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 px-4 py-1.5 rounded-full mb-8"
         >
-          <Sparkles size={14} className="text-purple-400" />
-          <span className="text-purple-300 text-xs font-bold uppercase tracking-widest">
+          <Sparkles size={14} className="text-primary" />
+          <span className="text-primary-glow text-xs font-bold uppercase tracking-widest">
             Let's Build Together
           </span>
         </motion.div>
@@ -36,9 +36,9 @@ const CTA = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+          className="text-foreground text-5xl md:text-7xl font-bold mb-6 tracking-tight"
         >
-          Catch the <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Success</span> <br /> 
+          Catch the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Success</span> <br /> 
           with retnavia.
         </motion.h2>
 
@@ -46,24 +46,23 @@ const CTA = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-gray-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light"
+          className="text-muted-foreground text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light"
         >
           Aapka vision aur hamari technical expertise—mil kar banate hain kuch behtareen. 
           Kya aap apne business ko agle level par le jaane ke liye tayyar hain?
         </motion.p>
 
-        {/* Buttons Group */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap justify-center gap-6"
         >
-          <button className="bg-white text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-purple-500 hover:text-white transition-all duration-300 shadow-2xl flex items-center gap-3">
+          <button className="bg-foreground text-background px-10 py-4 rounded-full font-bold text-lg hover:bg-primary hover:text-foreground transition-all duration-300 shadow-2xl flex items-center gap-3">
             Start Your Project <ArrowRight size={20} />
           </button>
           
-          <button className="border border-white/20 backdrop-blur-md text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">
+          <button className="border border-border backdrop-blur-md text-foreground px-10 py-4 rounded-full font-bold text-lg hover:bg-overlay transition-all">
             Schedule a Call
           </button>
         </motion.div>

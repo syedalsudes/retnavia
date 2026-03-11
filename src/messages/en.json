@@ -1,0 +1,155 @@
+{
+  "Navbar": {
+    "brand": "retnavia",
+    "links": {
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "contact": "Contact",
+      "blog": "Blog"
+    },
+    "getConsultant": "Get a Consultant",
+    "phone": "+971 4 242 1375",
+    "email": "hello@retnavia.com"
+  },
+  "HeroSection": {
+    "title1": "Code That Defines",
+    "title2": "Tomorrow.",
+    "subtitle": "Next-gen technology solutions for brands ready to lead the digital revolution.",
+    "startProject": "Start Your Project",
+    "seeWork": "See our work"
+  },
+  "WhatWeDo": {
+    "badge": "Capabilities",
+    "title1": "Architecting the next",
+    "title2": "digital frontier."
+  },
+  "AboutSection": {
+    "badge": "Our Identity",
+    "title1": "We are the architects",
+    "title2": "of digital change.",
+    "desc1": "At retnavia, our mission is to bridge the gap between human imagination and technical execution. We don't just build products; we craft experiences that resonate.",
+    "desc2": "Our team of multidisciplinary experts thrives on complexity, turning abstract ideas into high-performance digital ecosystems that scale.",
+    "stats": {
+      "milestones": "Milestones Reached",
+      "satisfaction": "Client Satisfaction"
+    }
+  },
+  "OurWork": {
+    "badge": "Portfolio",
+    "title1": "Selected",
+    "title2": "Works.",
+    "subtitle": "We partner with global brands to engineer high-performance digital gateways."
+  },
+  "ModernPortfolioPage": {
+    "badge": "Our Selected Works",
+    "title1": "Engineering",
+    "title2": "Digital",
+    "title3": "Excellence.",
+    "subtitle": "A curated selection of projects where innovative code meets strategic design to solve complex, real-world problems.",
+    "exploreProject": "Explore Project",
+    "footerText": "Retnavia © 2026 — Built for Performance"
+  },
+  "Services": {
+    "badge": "Our Core Expertise",
+    "title1": "ENGINEERING",
+    "title2": "Growth.",
+    "scroll": "Scroll to explore",
+    "explore": "Explore",
+    "coreOfferings": "Core Offerings",
+    "impact": "Impact",
+    "capabilitiesTitle1": "Our Complete",
+    "capabilitiesTitle2": "Capabilities.",
+    "capabilitiesDesc": "From enterprise software to full-scale digital marketing, explore our comprehensive suite of services designed to scale your business."
+  },
+  "DynamicServicePage": {
+    "badge": "Service Details",
+    "approachTitle1": "Our",
+    "approachTitle2": "Approach",
+    "toolsBadge": "Tools of the Trade",
+    "toolsTitle": "Technologies We Master",
+    "ctaTitle1": "Ready to scale with",
+    "ctaButton": "Start a Conversation"
+  },
+  "AboutPage": {
+    "badge": "Who We Are",
+    "title1": "About",
+    "title2": "Us.",
+    "scroll": "Scroll",
+    "meetTitle1": "Meet The Best",
+    "meetTitle2": "Digital Agency.",
+    "meetDesc1": "Harum quisquam amet debitis pariatur quas? Nemo excepturi duis minus nostrud officiis dolorem fugit itaque.",
+    "meetDesc2": "Odio velit, odit, est, euismod condimentum, nostrum mi venenatis, mollit odio mi.",
+    "features": {
+      "price": "Best Price",
+      "finance": "Finance",
+      "team": "Pro Team"
+    },
+    "coreValuesBadge": "Core Values",
+    "coreValuesTitle1": "Our Commitment To",
+    "coreValuesTitle2": "Your Success.",
+    "values": {
+      "innovative": {
+        "title": "Innovative Solutions",
+        "desc": "Hum hamesha latest technology use karte hain taake aapka business futuristic lage."
+      },
+      "strategic": {
+        "title": "Strategic Planning",
+        "desc": "Har project shuru karne se pehle hum aik solid strategy banate hain taake koi ghalti na ho."
+      },
+      "support": {
+        "title": "24/7 Premium Support",
+        "desc": "Aapke har sawal aur masle ka hal nikalne ke liye hamari support team hamesha hazir hai."
+      }
+    }
+  },
+  "FAQ": {
+    "badge": "Support Center",
+    "title1": "Got questions?",
+    "title2": "We have answers.",
+    "subtitle": "Everything you need to know about our process, technology, and how we help your brand grow in the digital space.",
+    "confusedTitle": "Still confused?",
+    "chatButton": "Chat with our team"
+  },
+  "CTA": {
+    "badge": "Let's Build Together",
+    "title1": "Catch the",
+    "title2": "Success",
+    "title3": "with retnavia.",
+    "subtitle": "Aapka vision aur hamari technical expertise—mil kar banate hain kuch behtareen. Kya aap apne business ko agle level par le jaane ke liye tayyar hain?",
+    "btnStart": "Start Your Project",
+    "btnSchedule": "Schedule a Call"
+  },
+  "Contact": {
+    "title1": "GET IN",
+    "title2": "Touch",
+    "scroll": "Scroll",
+    "heading1": "Get in",
+    "heading2": "touch.",
+    "subtitle": "Ready to transform your ideas into digital reality? We're just a message away.",
+    "info": {
+      "email": "Email",
+      "phone": "Phone",
+      "office": "Office"
+    },
+    "form": {
+      "nameLabel": "NAME",
+      "namePlaceholder": "Your name",
+      "emailLabel": "EMAIL",
+      "emailPlaceholder": "hello@company.com",
+      "subjectLabel": "SUBJECT",
+      "subjectPlaceholder": "How can we help?",
+      "messageLabel": "MESSAGE",
+      "messagePlaceholder": "Tell us about your project...",
+      "btnSubmit": "SEND MESSAGE"
+    }
+  },
+  "Footer": {
+    "slogan": "Building the future, one pixel at a time",
+    "copyright": "All rights reserved.",
+    "links": {
+      "terms": "Terms",
+      "policy": "Policy"
+    }
+  }
+}

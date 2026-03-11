@@ -9,21 +9,19 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black font-sans selection:bg-purple-500/30">
+    <main className="min-h-screen bg-background selection:bg-primary/30">
       
-      {/* 1. Hero Section - Base layer */}
       <div className="relative z-10">
         <HeroSection />
       </div>
 
-      <section className="sticky top-0 z-30 min-h-screen bg-black shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
+      <section className="sticky top-0 z-30 min-h-screen bg-background shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
         <ScrollReveal>
           <WhatWeDo />
         </ScrollReveal>
       </section>
 
-
-      <div className="relative z-40 bg-black">
+      <div className="relative z-40 bg-background">
         <ScrollReveal>
           <OurWork />
         </ScrollReveal>

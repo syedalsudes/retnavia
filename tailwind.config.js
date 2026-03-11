@@ -1,10 +1,10 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -21,10 +21,9 @@ const config: Config = {
         overlay: "var(--bg-overlay)",
       },
       fontFamily: {
-        silkscreen: ['"Silkscreen"', 'cursive'], 
+        sans: ['var(--font-anta)', 'sans-serif'],
       },
     },
   },
   plugins: [],
 };
-export default config;
