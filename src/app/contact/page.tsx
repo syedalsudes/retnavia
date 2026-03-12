@@ -11,48 +11,72 @@ const Contact = () => {
   const opacityHero = useTransform(scrollY, [0, 400], [1, 0]);
 
   const [activeService, setActiveService] = useState("");
-  
+
   const servicesList = [
     "Web Development", "Mobile App", "UI/UX Design", "AI Integration", "SEO / Marketing", "Other"
   ];
 
   return (
     <div className="bg-background selection:bg-primary/30">
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
+        <motion.div className="absolute inset-0 z-0">
           <Image
-            src="/contactbg.png"
+            src="/allheader.png"
             alt="Contact Background"
             fill
-            className="object-cover scale-105"
+            className="object-cover opacity-40 grayscale-[0.6] contrast-[1.1]"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background"></div>
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/20 to-background" />
+        </motion.div>
 
-        <motion.div
-          style={{ y: yText, opacity: opacityHero }}
-          className="relative z-10 text-center px-6"
-        >
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-foreground text-6xl md:text-9xl font-black tracking-tighter uppercase leading-none"
+        <div className="relative z-10 max-w-7xl px-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-4 mb-6"
           >
-            GET IN <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-light">Touch</span>
+            <div className="w-10 h-[1px] bg-primary" />
+            <span className="text-muted-foreground text-[10px] uppercase tracking-[0.5em] font-medium">
+              Let's Collaborate
+            </span>
+          </motion.div>
+
+          <motion.h1
+            style={{ y: yText, opacity: opacityHero }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-foreground text-[10vw] md:text-[8.5vw] font-light leading-none tracking-tighter uppercase whitespace-nowrap"
+          >
+            GET IN <span className="italic text-primary/90 font-extralight">TOUCH.</span>
           </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-10 max-w-xl border-l border-primary/30 pl-8"
+          >
+            <p className="text-muted-foreground text-sm md:text-lg font-light leading-relaxed tracking-wide">
+              Have a groundbreaking idea or a complex problem? We're here to help
+              you engineer the solution. Reach out and let's build something
+              extraordinary together.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="absolute bottom-[-150px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+            transition={{ delay: 1.2, duration: 1 }}
+            className="absolute -bottom-24 md:-bottom-16 left-8"
           >
-            <span className="text-muted-foreground text-[10px] uppercase tracking-[0.5em] rotate-90 mb-8">Scroll</span>
-            <div className="w-[1px] h-24 bg-gradient-to-b from-primary to-transparent"></div>
+            <p className="text-muted-foreground/40 text-[9px] uppercase tracking-[0.4em] rotate-90 origin-left">
+              Scroll to reach out
+            </p>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       <section className="relative py-24 px-6 md:px-12 overflow-hidden">
@@ -72,7 +96,7 @@ const Contact = () => {
             >
               <div className="space-y-6">
                 <h2 className="text-foreground text-5xl md:text-6xl font-bold tracking-tight leading-[1]">
-                  Let's build <br/> something <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent italic font-light">epic.</span>
+                  Let's build <br /> something <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent italic font-light">epic.</span>
                 </h2>
                 <p className="text-muted-foreground text-lg font-light max-w-sm leading-relaxed">
                   Have a project in mind, need technical consultation, or just want to say hi? Drop us a line.
@@ -127,11 +151,10 @@ const Contact = () => {
                           key={service}
                           type="button"
                           onClick={() => setActiveService(service)}
-                          className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border flex items-center gap-2 ${
-                            activeService === service
+                          className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border flex items-center gap-2 ${activeService === service
                               ? "bg-primary border-primary text-background shadow-[0_0_15px_var(--primary-glow)]"
                               : "bg-overlay border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
-                          }`}
+                            }`}
                         >
                           {activeService === service && <CheckCircle2 size={14} className="text-background" />}
                           {service}
@@ -145,7 +168,7 @@ const Contact = () => {
                       <label className="text-muted-foreground text-xs font-bold tracking-widest uppercase ml-1">Company / Website</label>
                       <input type="text" placeholder="company.com (optional)" className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-muted" />
                     </div>
-                    
+
                     <div className="space-y-2 relative">
                       <label className="text-muted-foreground text-xs font-bold tracking-widest uppercase ml-1">Project Timeline</label>
                       <div className="relative">

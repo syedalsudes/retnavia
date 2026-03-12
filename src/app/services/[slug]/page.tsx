@@ -36,44 +36,73 @@ export default function DynamicServicePage({ params }: Props) {
   }
 
   return (
-    <main className="relative bg-background min-h-screen text-foreground pt-32 pb-20 selection:bg-primary/30 overflow-hidden">
+    <main className="relative bg-background min-h-screen text-foreground pb-20 selection:bg-primary/30 overflow-hidden">
       
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary-glow/10 blur-[120px] rounded-full pointer-events-none" />
 
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-32 relative z-10 flex flex-col items-center text-center">
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/allheader.png" 
+            alt={service.title}
+            fill
+            className="object-cover opacity-40 grayscale-[0.6] contrast-[1.1]"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/20 to-background" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl px-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-4 mb-6"
+          >
+            <div className="w-10 h-[1px] bg-primary" />
+            <span className="text-muted-foreground text-[10px] uppercase tracking-[0.5em] font-medium">
+              Expertise In {service.title}
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-foreground text-[10vw] md:text-[8.5vw] font-light leading-[0.85] tracking-tighter uppercase"
+          >
+            {service.title.split(' ')[0]} <br />
+            <span className="italic text-primary/90 font-extralight">
+              {service.title.split(' ').slice(1).join(' ') || "SOLUTIONS."}
+            </span>
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-10 max-w-xl border-l border-primary/30 pl-8"
+          >
+            <p className="text-muted-foreground text-sm md:text-lg font-light italic leading-relaxed tracking-wide">
+              "{service.subtitle}"
+            </p>
+          </motion.div>
+        </div>
+
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-overlay border border-white/[0.1] mb-8 backdrop-blur-md"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 1 }}
+          className="absolute -bottom-24 md:-bottom-16 left-8"
         >
-          <Sparkles size={14} className="text-primary" />
-          <span className="text-primary/80 text-[11px] uppercase tracking-[0.3em] font-medium">
-            Service Details
-          </span>
+          <p className="text-muted-foreground/40 text-[9px] uppercase tracking-[0.4em] rotate-90 origin-left">
+            Scroll to analyze
+          </p>
         </motion.div>
-        
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter mb-8 leading-[1.1]"
-        >
-          {service.title}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">.</span>
-        </motion.h1>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="text-lg md:text-2xl text-muted-foreground font-light max-w-2xl italic leading-relaxed"
-        >
-          "{service.subtitle}"
-        </motion.p>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-40 relative z-10">
+      <section className="max-w-7xl mx-auto pt-11 px-6 md:px-12 mb-40 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           <motion.div 

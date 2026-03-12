@@ -39,7 +39,7 @@ const CTA = () => {
           className="text-foreground text-5xl md:text-7xl font-bold mb-6 tracking-tight"
         >
           Catch the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Success</span> <br /> 
-          with retnavia.
+          with Retnavia.
         </motion.h2>
 
         <motion.p

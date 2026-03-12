@@ -7,74 +7,72 @@ import { CheckCircle2, Users, Award, Briefcase, Zap, Rocket, Sparkles } from "lu
 
 const AboutPage = () => {
   const { scrollY } = useScroll();
-  
+
   const yText = useTransform(scrollY, [0, 500], [0, 150]);
   const opacityHero = useTransform(scrollY, [0, 400], [1, 0]);
   const scaleImage = useTransform(scrollY, [0, 500], [1, 1.1]);
 
   return (
     <div className="bg-background font-sans selection:bg-primary/30 overflow-hidden relative">
-      
+
       <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-primary-glow/10 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-secondary/10 blur-[120px] rounded-full pointer-events-none" />
-
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
         <motion.div style={{ scale: scaleImage }} className="absolute inset-0 z-0">
           <Image
-            src="/aboutbg.png" 
-            alt="Office Banner"
+            src="/allheader.png"
+            alt="About Us Background"
             fill
-            className="object-cover"
+            className="object-cover opacity-40 grayscale-[0.6] contrast-[1.1]"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent h-40 bottom-0 top-auto"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/20 to-background" />
         </motion.div>
 
-        <motion.div 
-          style={{ y: yText, opacity: opacityHero }}
-          className="relative z-10 text-center px-6 mt-20"
-        >
+        <div className="relative z-10 max-w-7xl px-8 w-full">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-overlay border border-white/[0.1] mb-8 backdrop-blur-md"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-4 mb-6"
           >
-            <Sparkles size={14} className="text-primary" />
-            <span className="text-primary/80 text-[11px] font-semibold uppercase tracking-[0.3em]">
+            <div className="w-10 h-[1px] bg-primary" />
+            <span className="text-muted-foreground text-[10px] uppercase tracking-[0.5em] font-medium">
               Who We Are
             </span>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
+            style={{ y: yText, opacity: opacityHero }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-foreground text-6xl md:text-8xl lg:text-[10rem] font-light tracking-tighter uppercase leading-[0.9]"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-foreground text-[10vw] md:text-[8.5vw] font-light leading-none tracking-tighter uppercase whitespace-nowrap"
           >
-            About <br className="md:hidden" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary italic">
-              Us.
-            </span>
+            ABOUT <span className="italic text-primary/90 font-extralight">US.</span>
           </motion.h1>
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="absolute -bottom-32 md:-bottom-40 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-10 max-w-xl border-l border-primary/30 pl-8"
           >
-            <span className="text-muted-foreground text-[9px] font-bold uppercase tracking-[0.4em] rotate-90 mb-6">Scroll</span>
-            <div className="w-[1px] h-24 bg-gradient-to-b from-primary/50 to-transparent"></div>
+            <p className="text-muted-foreground text-sm md:text-lg font-light leading-relaxed tracking-wide">
+              We are a collective of strategists, designers, and engineers
+              dedicated to building digital products that leave a lasting impact.
+              Through purposeful code and visionary design, we transform ideas
+              into world-class experiences.
+            </p>
           </motion.div>
-        </motion.div>
+
+        </div>
       </section>
 
       <section className="relative py-32 md:py-48 px-6 md:px-12 z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -83,7 +81,7 @@ const AboutPage = () => {
           >
             <div>
               <h2 className="text-foreground text-4xl md:text-6xl font-light tracking-tight leading-[1.1] mb-8">
-                Meet The Best <br /> 
+                Meet The Best <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-muted-foreground to-muted italic">Digital Agency.</span>
               </h2>
               <div className="border-l-[3px] border-primary/50 pl-6 space-y-5">
@@ -112,14 +110,14 @@ const AboutPage = () => {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
             className="relative h-[400px] md:h-[600px] w-full"
           >
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
               className="absolute top-10 right-0 md:-right-10 w-3/4 aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-white/[0.05] shadow-[0_0_50px_rgba(0,0,0,0.8)] z-0 hidden md:block"
@@ -127,7 +125,7 @@ const AboutPage = () => {
               <Image src="/aboutbg.png" alt="Support Work" fill className="object-cover brightness-[0.6] grayscale-[30%]" />
             </motion.div>
 
-            <motion.div 
+            <motion.div
               animate={{ y: [0, 15, 0] }}
               transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
               className="absolute bottom-0 left-0 w-full md:w-4/5 aspect-[4/5] md:aspect-square rounded-[3rem] overflow-hidden border border-border shadow-2xl z-10"
@@ -141,7 +139,7 @@ const AboutPage = () => {
 
       <section className="py-32 px-6 relative z-10 border-t border-white/[0.02]">
         <div className="max-w-7xl mx-auto text-center mb-24">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -149,43 +147,43 @@ const AboutPage = () => {
           >
             <span className="text-primary text-[10px] font-bold uppercase tracking-[0.3em]">Core Values</span>
           </motion.div>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-foreground text-4xl md:text-6xl lg:text-7xl font-light tracking-tight"
           >
-            Our Commitment To <br className="hidden md:block"/>
+            Our Commitment To <br className="hidden md:block" />
             <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent"> Your Success.</span>
           </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {[
-            { 
-              title: "Innovative Solutions", 
-              desc: "Hum hamesha latest technology use karte hain taake aapka business futuristic lage.", 
+            {
+              title: "Innovative Solutions",
+              desc: "Hum hamesha latest technology use karte hain taake aapka business futuristic lage.",
               icon: <Zap />,
               color: "text-primary",
               bgGlow: "group-hover:shadow-[0_0_30px_#c084fc20]"
             },
-            { 
-              title: "Strategic Planning", 
-              desc: "Har project shuru karne se pehle hum aik solid strategy banate hain taake koi ghalti na ho.", 
+            {
+              title: "Strategic Planning",
+              desc: "Har project shuru karne se pehle hum aik solid strategy banate hain taake koi ghalti na ho.",
               icon: <Rocket />,
               color: "text-secondary",
               bgGlow: "group-hover:shadow-[0_0_30px_#3b82f620]"
             },
-            { 
-              title: "24/7 Premium Support", 
-              desc: "Aapke har sawal aur masle ka hal nikalne ke liye hamari support team hamesha hazir hai.", 
+            {
+              title: "24/7 Premium Support",
+              desc: "Aapke har sawal aur masle ka hal nikalne ke liye hamari support team hamesha hazir hai.",
               icon: <Briefcase />,
               color: "text-accent",
               bgGlow: "group-hover:shadow-[0_0_30px_#818cf820]"
             }
           ].map((value, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -198,10 +196,10 @@ const AboutPage = () => {
               <div className={`w-14 h-14 rounded-2xl bg-background/50 border border-border flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 ${value.color} shadow-lg backdrop-blur-md`}>
                 {React.cloneElement(value.icon as React.ReactElement, { size: 24, strokeWidth: 1.5 })}
               </div>
-              
+
               <h4 className="text-foreground text-2xl font-medium mb-4 tracking-tight">{value.title}</h4>
               <p className="text-muted-foreground leading-relaxed font-light text-sm md:text-base">{value.desc}</p>
-              
+
               <div className="mt-10 flex items-center gap-4">
                 <div className="w-12 h-[1px] bg-border group-hover:w-full transition-all duration-700 ease-out"></div>
                 <div className="w-1.5 h-1.5 rounded-full bg-border group-hover:bg-primary transition-colors duration-700"></div>
