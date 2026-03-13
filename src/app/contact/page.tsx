@@ -65,17 +65,7 @@ const Contact = () => {
               extraordinary together.
             </p>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="absolute -bottom-24 md:-bottom-16 left-8"
-          >
-            <p className="text-muted-foreground/40 text-[9px] uppercase tracking-[0.4em] rotate-90 origin-left">
-              Scroll to reach out
-            </p>
-          </motion.div>
+          
         </div>
       </section>
 
