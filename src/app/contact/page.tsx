@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Mail, MapPin, Phone, ArrowRight, ChevronDown, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Phone, ArrowRight, ChevronDown, CheckCircle2, Loader2 } from "lucide-react";
 
 const Contact = () => {
   const { scrollY } = useScroll();
@@ -12,9 +12,50 @@ const Contact = () => {
 
   const [activeService, setActiveService] = useState("");
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
   const servicesList = [
     "Web Development", "Mobile App", "UI/UX Design", "AI Integration", "SEO / Marketing", "Other"
   ];
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus("idle");
+
+    const formData = new FormData(e.currentTarget);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      service: activeService || "Not Specified",
+      company: formData.get("company") || "N/A",
+      timeline: formData.get("timeline") || "Not Specified",
+      details: formData.get("details"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        (e.target as HTMLFormElement).reset();
+        setActiveService("");
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="bg-background selection:bg-primary/30">
@@ -65,7 +106,6 @@ const Contact = () => {
               extraordinary together.
             </p>
           </motion.div>
-          
         </div>
       </section>
 
@@ -121,15 +161,15 @@ const Contact = () => {
               <div className="bg-overlay/30 border border-border p-8 md:p-12 rounded-[2.5rem] shadow-[0_0_80px_rgba(0,0,0,0.8)] backdrop-blur-xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl rounded-full -mr-32 -mt-32 transition-opacity group-hover:opacity-100 opacity-50"></div>
 
-                <form className="space-y-8 relative z-10">
+                <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-muted-foreground text-xs font-bold tracking-widest uppercase ml-1">Full Name</label>
-                      <input type="text" placeholder="John Doe" className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-muted" />
+                      <input required type="text" name="name" placeholder="Full Name" className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-muted" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-muted-foreground text-xs font-bold tracking-widest uppercase ml-1">Work Email</label>
-                      <input type="email" placeholder="john@company.com" className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-muted" />
+                      <input required type="email" name="email" placeholder="your@company.com" className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-muted" />
                     </div>
                   </div>
 
@@ -142,8 +182,8 @@ const Contact = () => {
                           type="button"
                           onClick={() => setActiveService(service)}
                           className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border flex items-center gap-2 ${activeService === service
-                              ? "bg-primary border-primary text-background shadow-[0_0_15px_var(--primary-glow)]"
-                              : "bg-overlay border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                            ? "bg-primary border-primary text-background shadow-[0_0_15px_var(--primary-glow)]"
+                            : "bg-overlay border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
                             }`}
                         >
                           {activeService === service && <CheckCircle2 size={14} className="text-background" />}
@@ -156,34 +196,65 @@ const Contact = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-muted-foreground text-xs font-bold tracking-widest uppercase ml-1">Company / Website</label>
-                      <input type="text" placeholder="company.com (optional)" className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-muted" />
+                      <input type="text" name="company" placeholder="company.com (optional)" className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-muted" />
                     </div>
 
                     <div className="space-y-2 relative">
-                      <label className="text-muted-foreground text-xs font-bold tracking-widest uppercase ml-1">Project Timeline</label>
-                      <div className="relative">
-                        <select className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all appearance-none cursor-pointer">
-                          <option value="" disabled selected className="text-muted bg-background">When to start?</option>
-                          <option value="asap" className="bg-background text-foreground">As soon as possible</option>
-                          <option value="1-3-months" className="bg-background text-foreground">Within 1-3 months</option>
-                          <option value="3-6-months" className="bg-background text-foreground">Within 3-6 months</option>
-                          <option value="exploring" className="bg-background text-foreground">Just exploring options</option>
+                      <label className="text-muted-foreground text-xs font-bold tracking-widest uppercase ml-1">
+                        Project Timeline
+                      </label>
+                      <div className="relative group">
+                        <select
+                          name="timeline"
+                          defaultValue=""
+                          className="w-full bg-background appearance-none border border-border rounded-2xl px-6 py-4 text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                        >
+                          <option value="" disabled>When to start?</option>
+                          <option value="asap">As soon as possible</option>
+                          <option value="1-3-months">Within 1-3 months</option>
+                          <option value="3-6-months">Within 3-6 months</option>
+                          <option value="exploring">Just exploring options</option>
                         </select>
-                        <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" size={18} />
+
+                        <ChevronDown
+                          className="absolute right-5 top-1/2 -translate-y-1/2 text-muted-foreground group-hover:text-foreground pointer-events-none transition-colors duration-300"
+                          size={18}
+                        />
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-muted-foreground text-xs font-bold tracking-widest uppercase ml-1">Project Details</label>
-                    <textarea rows={4} placeholder="Tell us about your goals, current challenges, and what you want to achieve..." className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all resize-none placeholder:text-muted"></textarea>
+                    <textarea required name="details" rows={4} placeholder="Tell us about your goals..." className="w-full bg-overlay border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all resize-none placeholder:text-muted"></textarea>
                   </div>
 
-                  <button className="w-full group bg-primary text-background py-5 rounded-2xl font-bold transition-all duration-300 flex items-center justify-center gap-3 overflow-hidden relative mt-4">
-                    <span className="relative z-10 flex items-center gap-2 tracking-widest uppercase text-sm text-foreground">
-                      Submit Request <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  {status === "success" && (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-green-500/10 border border-green-500/50 rounded-xl text-green-500 text-sm text-center">
+                      Thanks! Your inquiry has been sent. We'll contact you soon.
+                    </motion.div>
+                  )}
+                  {status === "error" && (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-500 text-sm text-center">
+                      Something went wrong. Please try again later.
+                    </motion.div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full group bg-primary text-background py-5 rounded-2xl font-bold transition-all duration-300 flex items-center justify-center gap-3 overflow-hidden relative mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    <span className="relative z-10 flex items-center gap-2 tracking-widest uppercase text-sm text-background">
+                      {isSubmitting ? (
+                        <>Sending... <Loader2 size={18} className="animate-spin" /></>
+                      ) : (
+                        <>Submit Request <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>
+                      )}
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-glow to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    {!isSubmitting && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-glow to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    )}
                   </button>
                 </form>
               </div>

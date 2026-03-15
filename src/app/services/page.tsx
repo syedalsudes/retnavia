@@ -150,7 +150,7 @@ const ServiceCard = ({ service, index }: { service: typeof topServices[0], index
 const Services = () => {
     return (
         <main className="bg-background selection:bg-primary/30">
-            {/* Hero Section */}
+
             <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -182,8 +182,8 @@ const Services = () => {
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="text-foreground text-[13vw] md:text-[8vw] font-light leading-none tracking-tighter uppercase"
                     >
-                        ENGINEERING <br className="block md:hidden" />
-                        <span className="italic text-primary/90 font-extralight">GROWTH.</span>
+                        WHAT WE<br className="block md:hidden" />
+                        <span className="italic text-primary/90 font-extralight"> DO.</span>
                     </motion.h1>
 
                     <motion.div
@@ -193,21 +193,19 @@ const Services = () => {
                         className="mt-6 md:mt-10 max-w-xl border-l border-primary/30 pl-6 md:pl-8"
                     >
                         <p className="text-muted-foreground text-xs md:text-lg font-light leading-relaxed tracking-wide">
-                            From scalable architecture to seamless user interfaces, we provide 
+                            From scalable architecture to seamless user interfaces, we provide
                             the technical backbone your business needs to lead.
                         </p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Sticky Cards Section */}
             <div className="relative z-10">
                 {topServices.map((service, index) => (
                     <ServiceCard key={index} service={service} index={index} />
                 ))}
             </div>
 
-            {/* Grid Section */}
             <section className="py-20 md:py-32 px-6 md:px-12 bg-background relative z-10 border-t border-border">
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-12 md:mb-24">
