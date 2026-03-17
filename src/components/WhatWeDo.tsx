@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { 
-  Code2, Figma, Smartphone, Cloud, 
-  Palette, Megaphone, Cpu, Sparkles, Orbit 
+import {
+  Code2, Figma, Smartphone, Cloud,
+  Palette, Megaphone, Cpu, Sparkles, Orbit
 } from "lucide-react";
 
 const WhatWeDo = () => {
@@ -20,19 +20,24 @@ const WhatWeDo = () => {
 
   return (
     <section className="relative min-h-[80vh] w-full flex flex-col justify-center items-center overflow-hidden py-20 bg-background">
-      
+
       <div className="relative z-10 text-center px-6 mb-24">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-overlay border border-white/[0.03] mb-6">
-          <Sparkles size={12} className="text-primary" />
-          <span className="text-muted-foreground font-bold tracking-[0.4em] uppercase text-[8px]">
-            Capabilities
-          </span>
+        <div className="px-4 md:px-0">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-overlay border border-white/[0.03] mb-4 md:mb-6">
+            <Sparkles size={12} className="text-primary" />
+            <span className="text-muted-foreground font-bold tracking-[0.2em] md:tracking-[0.4em] uppercase text-[7px] md:text-[8px]">
+              Capabilities
+            </span>
+          </div>
+
+          <h2 className="text-foreground text-3xl sm:text-4xl md:text-6xl font-bold max-w-4xl leading-[1.1] tracking-tighter uppercase">
+            Architecting the next
+            <br className="hidden md:block" />
+            <span className="block md:inline-ml-2">
+              <span className="text-foreground/20 font-light italic"> digital frontier.</span>
+            </span>
+          </h2>
         </div>
-        
-        <h2 className="text-foreground text-4xl md:text-6xl font-bold max-w-4xl leading-tight tracking-tighter uppercase">
-          Architecting the next <br />
-          <span className="text-foreground/20 font-light italic">digital frontier.</span>
-        </h2>
       </div>
 
       <div className="relative z-10 w-full overflow-hidden border-y border-white/[0.03] py-10 bg-overlay/50">

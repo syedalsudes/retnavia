@@ -67,9 +67,9 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.8, 
-      ease: [0.22, 1, 0.36, 1] 
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1]
     },
   },
 };
@@ -129,8 +129,7 @@ const ModernPortfolioPage = () => {
           </motion.p>
         </div>
       </section>
-
-      <div className="sticky top-10 md:top-24 z-40 flex justify-center mb-12 md:mb-20 px-4 w-full pointer-events-none">
+      <div className="sticky top-[95px] md:top-[110px] z-40 flex justify-center mb-12 md:mb-20 px-4 w-full pointer-events-none">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

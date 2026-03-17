@@ -49,42 +49,38 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-[100] flex flex-col items-center py-4"
+      className="fixed top-0 left-0 w-full z-[100] flex flex-col items-center py-0 lg:py-4"
       onMouseLeave={() => setIsServicesOpen(false)}
     >
-      <motion.div
-        initial={false}
-        animate={{
-          width: isScrolled ? "90%" : "95%",
-          marginTop: isScrolled ? "10px" : "0px",
-          borderRadius: isScrolled ? "50px" : "0px",
-          backgroundColor: isScrolled ? "var(--bg-overlay)" : "transparent",
-          border: isScrolled ? "1px solid var(--border)" : "1px solid transparent",
-        }}
-        className={`flex items-center justify-between px-6 md:px-8 py-3 transition-all duration-500 relative z-[110] ${
-          isScrolled ? "backdrop-blur-md shadow-2xl" : ""
-        }`}
+      <div
+        className={`
+          flex items-center justify-between py-3 transition-all duration-500 ease-in-out relative z-[110]
+          w-full bg-overlay/90 backdrop-blur-md border-b border-border px-6
+          ${isScrolled 
+            ? "lg:w-[90%] lg:mt-2 lg:rounded-full lg:border lg:border-border lg:bg-overlay/80 lg:shadow-2xl lg:px-10" 
+            : "lg:w-full lg:mt-0 lg:rounded-none lg:border-transparent lg:bg-transparent lg:backdrop-blur-none lg:px-20"
+          }
+        `}
       >
         <Link href="/" className="text-2xl font-bold text-foreground tracking-tighter" onClick={closeMobileMenu}>
           retnavia<span className="text-primary">.</span>
         </Link>
 
-        {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center gap-8 text-sm font-medium text-foreground uppercase tracking-wider h-full">
           {navLinks.map((link) => (
             <li
               key={link.name}
               className="relative py-2"
-              onMouseEnter={() => link.hasDropdown && setIsServicesOpen(true)}
+              onMouseEnter={() => link.hasDropdown ? setIsServicesOpen(true) : setIsServicesOpen(false)}
             >
               <Link
                 href={link.href}
                 onClick={() => setIsServicesOpen(false)}
-                className="group relative py-2 hover:text-foreground transition-colors duration-300"
+                className="group relative py-2 hover:text-foreground transition-colors duration-200"
               >
                 <span className="relative">
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+                  <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary scale-x-0 origin-left transition-transform duration-200 group-hover:scale-x-100"></span>
                 </span>
               </Link>
             </li>
@@ -97,18 +93,19 @@ const Navbar = () => {
           </button>
 
           <div className="hidden md:flex items-center gap-3">
-            <motion.div whileHover="hover" initial="initial" className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group">
+            <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
               <div className="p-2.5 bg-overlay text-foreground z-10"><Phone size={18} /></div>
-              <motion.div variants={{ initial: { width: 0, opacity: 0 }, hover: { width: "auto", opacity: 1, paddingRight: "20px", paddingLeft: "10px" } }} className="overflow-hidden whitespace-nowrap">
+              <div className="max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-5 group-hover:pl-2 transition-all duration-500 overflow-hidden whitespace-nowrap">
                 <span className="text-foreground text-xs font-bold tracking-tighter">+971 4 242 1375</span>
-              </motion.div>
-            </motion.div>
-            <motion.div whileHover="hover" initial="initial" className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group">
+              </div>
+            </div>
+
+            <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
               <div className="p-2.5 bg-overlay text-foreground z-10"><Mail size={18} /></div>
-              <motion.div variants={{ initial: { width: 0, opacity: 0 }, hover: { width: "auto", opacity: 1, paddingRight: "20px", paddingLeft: "10px" } }} className="overflow-hidden whitespace-nowrap">
+              <div className="max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-5 group-hover:pl-2 transition-all duration-500 overflow-hidden whitespace-nowrap">
                 <span className="text-foreground text-xs font-bold tracking-tighter">hello@retnavia.com</span>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
 
           <button 
@@ -124,72 +121,59 @@ const Navbar = () => {
             )}
           </button>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Desktop Dropdown */}
       <AnimatePresence>
         {isServicesOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="hidden lg:block fixed top-0 left-0 w-full h-auto bg-background/80 backdrop-blur-xl border-b border-border z-[80] pt-[100px] pb-16 shadow-[0_50px_100px_rgba(0,0,0,0.9)]"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
-              <div className="max-w-[1400px] mx-auto px-12 grid grid-cols-12 items-center relative mt-10">
-                <div className="col-span-12 lg:col-span-8 grid grid-cols-2 gap-x-10 gap-y-2">
-                  {servicesList.map((service, idx) => (
-                    <Link
-                      key={idx}
-                      href={service.href}
-                      onClick={() => setIsServicesOpen(false)}
-                      className="flex items-center justify-between group/item p-4 rounded-xl hover:bg-overlay transition-all"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_12px_var(--primary-glow)]" />
-                        <span className="text-muted-foreground text-[15px] font-normal group-hover/item:text-foreground transition-colors uppercase tracking-wide">
-                          {service.name}
-                        </span>
-                      </div>
-                      <ChevronRight size={18} className="text-muted group-hover/item:text-primary group-hover/item:translate-x-2 transition-all" />
-                    </Link>
-                  ))}
-                </div>
-                <div className="hidden lg:flex col-span-4 justify-end items-center absolute right-12 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <h2 className="text-[10vw] font-black tracking-[-0.05em] leading-none select-none opacity-[0.03] text-foreground uppercase italic">retnavia</h2>
-                </div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="hidden lg:block fixed top-0 left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border z-[80] pt-[120px] pb-16 shadow-2xl"
+            onMouseEnter={() => setIsServicesOpen(true)}
+            onMouseLeave={() => setIsServicesOpen(false)}
+          >
+            <div className="max-w-[1400px] mx-auto px-12 grid grid-cols-12 items-center relative">
+              <div className="col-span-12 lg:col-span-8 grid grid-cols-2 gap-x-10 gap-y-2">
+                {servicesList.map((service, idx) => (
+                  <Link
+                    key={idx}
+                    href={service.href}
+                    onClick={() => setIsServicesOpen(false)}
+                    className="flex items-center justify-between group/item p-4 rounded-xl hover:bg-overlay transition-all"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_12px_var(--primary-glow)]" />
+                      <span className="text-muted-foreground text-[15px] font-normal group-hover/item:text-foreground transition-colors uppercase tracking-wide">
+                        {service.name}
+                      </span>
+                    </div>
+                    <ChevronRight size={18} className="text-muted group-hover/item:text-primary group-hover/item:translate-x-2 transition-all" />
+                  </Link>
+                ))}
               </div>
-            </motion.div>
-            {/* Invisible gap filler to keep menu open while moving mouse down */}
-            <div 
-              className="hidden lg:block fixed top-[60px] left-0 w-full h-[40px] z-[70]" 
-              onMouseEnter={() => setIsServicesOpen(true)}
-            />
-          </>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            initial={{ y: "-100%" }} 
+            animate={{ y: 0 }}       
+            exit={{ y: "-100%" }}    
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 w-full h-screen bg-background z-[90] flex flex-col pt-28 px-6 pb-10 overflow-y-auto"
           >
             <AnimatePresence mode="wait">
               {mobileView === "main" && (
                 <motion.div
                   key="main"
-                  initial={{ opacity: 0, x: -50 }}
+                  initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: 0, x: -10 }}
                   className="flex flex-col w-full"
                 >
                   {navLinks.map((link, idx) => (
@@ -203,10 +187,7 @@ const Navbar = () => {
                       </Link>
                       {link.hasDropdown && (
                         <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setMobileView("services");
-                          }}
+                          onClick={() => setMobileView("services")}
                           className="p-4 border-l border-border ml-2"
                         >
                           <div className="border border-border p-1 rounded-sm">
@@ -222,10 +203,9 @@ const Navbar = () => {
               {mobileView === "services" && (
                 <motion.div
                   key="services"
-                  initial={{ opacity: 0, x: 50 }}
+                  initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: 0, x: 10 }}
                   className="flex flex-col w-full"
                 >
                   <div className="border-b border-border pb-6 mb-2">
@@ -238,7 +218,7 @@ const Navbar = () => {
                       key={idx}
                       href={service.href}
                       onClick={closeMobileMenu}
-                      className="flex items-center justify-between py-5 border-b border-border group"
+                      className="flex items-center justify-between py-5 border-b border-border"
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-2.5 h-2.5 rounded-full bg-primary" />

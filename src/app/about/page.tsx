@@ -86,10 +86,7 @@ const AboutPage = () => {
               </h2>
               <div className="border-l-[3px] border-primary/50 pl-6 space-y-5">
                 <p className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed">
-                  Harum quisquam amet debitis pariatur quas? Nemo excepturi duis minus nostrud officiis dolorem fugit itaque.
-                </p>
-                <p className="text-muted text-sm md:text-base font-normal leading-relaxed">
-                  Odio velit, odit, est, euismod condimentum, nostrum mi venenatis, mollit odio mi.
+                  We are a collective of visionaries, strategists, and creators dedicated to redefining the digital landscape through purposeful design and cutting-edge technology.
                 </p>
               </div>
             </div>
