@@ -135,7 +135,7 @@ const Contact = () => {
 
               <div className="space-y-6 md:space-y-8 pt-8 border-t border-white/[0.05]">
                 {[
-                  { icon: <Mail />, label: "Direct Email", val: "discover@retnavia.com" },
+                  { icon: <Mail />, label: "Direct Email", val: "contact@retnavia.com" },
                   { icon: <Phone />, label: "Call Us", val: "+971 4 242 1375" },
                   { icon: <MapPin />, label: "Headquarters", val: "Sheikh Zayed Road, Dubai" },
                 ].map((item, i) => (

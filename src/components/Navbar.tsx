@@ -56,8 +56,8 @@ const Navbar = () => {
         className={`
           flex items-center justify-between py-3 transition-all duration-500 ease-in-out relative z-[110]
           w-full bg-overlay/90 backdrop-blur-md border-b border-border px-6
-          ${isScrolled 
-            ? "lg:w-[90%] lg:mt-2 lg:rounded-full lg:border lg:border-border lg:bg-overlay/80 lg:shadow-2xl lg:px-10" 
+          ${isScrolled
+            ? "lg:w-[90%] lg:mt-2 lg:rounded-full lg:border lg:border-border lg:bg-overlay/80 lg:shadow-2xl lg:px-10"
             : "lg:w-full lg:mt-0 lg:rounded-none lg:border-transparent lg:bg-transparent lg:backdrop-blur-none lg:px-20"
           }
         `}
@@ -91,7 +91,6 @@ const Navbar = () => {
           <button className="hidden sm:block bg-gradient-to-r from-primary-glow to-secondary text-foreground px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold hover:scale-105 transition-transform active:scale-95 shadow-lg uppercase tracking-wide">
             Get a Consultant
           </button>
-
           <div className="hidden md:flex items-center gap-3">
             <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
               <div className="p-2.5 bg-overlay text-foreground z-10"><Phone size={18} /></div>
@@ -103,13 +102,13 @@ const Navbar = () => {
             <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
               <div className="p-2.5 bg-overlay text-foreground z-10"><Mail size={18} /></div>
               <div className="max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-5 group-hover:pl-2 transition-all duration-500 overflow-hidden whitespace-nowrap">
-                <span className="text-foreground text-xs font-bold tracking-tighter">hello@retnavia.com</span>
+                <span className="text-foreground text-xs font-bold tracking-tighter">info@retnavia.com</span>
               </div>
             </div>
           </div>
 
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-foreground z-[120]"
           >
             {isMobileMenuOpen ? (
@@ -161,9 +160,9 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ y: "-100%" }} 
-            animate={{ y: 0 }}       
-            exit={{ y: "-100%" }}    
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 w-full h-screen bg-background z-[90] flex flex-col pt-28 px-6 pb-10 overflow-y-auto"
           >

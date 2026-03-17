@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 const CTA = () => {
   return (
@@ -38,7 +39,7 @@ const CTA = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-foreground text-5xl md:text-7xl font-bold mb-6 tracking-tight"
         >
-          Catch the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Success</span> <br /> 
+          Catch the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Success</span> <br />
           with Retnavia.
         </motion.h2>
 
@@ -48,7 +49,7 @@ const CTA = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-muted-foreground text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light"
         >
-          Aapka vision aur hamari technical expertise—mil kar banate hain kuch behtareen. 
+          Aapka vision aur hamari technical expertise—mil kar banate hain kuch behtareen.
           Kya aap apne business ko agle level par le jaane ke liye tayyar hain?
         </motion.p>
 
@@ -58,13 +59,16 @@ const CTA = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap justify-center gap-6"
         >
-          <button className="bg-foreground text-background px-10 py-4 rounded-full font-bold text-lg hover:bg-primary hover:text-foreground transition-all duration-300 shadow-2xl flex items-center gap-3">
-            Start Your Project <ArrowRight size={20} />
-          </button>
-          
-          <button className="border border-border backdrop-blur-md text-foreground px-10 py-4 rounded-full font-bold text-lg hover:bg-overlay transition-all">
-            Schedule a Call
-          </button>
+          <Link href="/contact">
+            <button className="bg-foreground text-background px-10 py-4 rounded-full font-bold text-lg hover:bg-primary hover:text-foreground transition-all duration-300 shadow-2xl flex items-center gap-3">
+              Start Your Project <ArrowRight size={20} />
+            </button>
+          </Link>
+          <Link href="/contact">
+            <button className="border border-border backdrop-blur-md text-foreground px-10 py-4 rounded-full font-bold text-lg hover:bg-overlay transition-all">
+              Schedule a Call
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>
