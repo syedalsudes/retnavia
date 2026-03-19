@@ -88,14 +88,16 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-2 md:gap-4">
-          <button className="hidden sm:block bg-gradient-to-r from-primary-glow to-secondary text-foreground px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold hover:scale-105 transition-transform active:scale-95 shadow-lg uppercase tracking-wide">
-            Get a Consultant
-          </button>
+          <Link href="/consultant">
+            <button className="hidden sm:block bg-gradient-to-r from-primary-glow to-secondary text-foreground px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold hover:scale-105 transition-transform active:scale-95 shadow-lg uppercase tracking-wide">
+              Get a Consultant
+            </button>
+          </Link>
           <div className="hidden md:flex items-center gap-3">
             <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
               <div className="p-2.5 bg-overlay text-foreground z-10"><Phone size={18} /></div>
               <div className="max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-5 group-hover:pl-2 transition-all duration-500 overflow-hidden whitespace-nowrap">
-                <span className="text-foreground text-xs font-bold tracking-tighter">+971 4 242 1375</span>
+                <span className="text-foreground text-xs font-bold tracking-tighter">+1 (747) 217-7426</span>
               </div>
             </div>
 

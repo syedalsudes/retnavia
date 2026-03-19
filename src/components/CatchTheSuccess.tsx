@@ -59,12 +59,12 @@ const CTA = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap justify-center gap-6"
         >
-          <Link href="/contact">
+          <Link href="/consultant">
             <button className="bg-foreground text-background px-10 py-4 rounded-full font-bold text-lg hover:bg-primary hover:text-foreground transition-all duration-300 shadow-2xl flex items-center gap-3">
               Start Your Project <ArrowRight size={20} />
             </button>
           </Link>
-          <Link href="/contact">
+          <Link href="/consultant">
             <button className="border border-border backdrop-blur-md text-foreground px-10 py-4 rounded-full font-bold text-lg hover:bg-overlay transition-all">
               Schedule a Call
             </button>

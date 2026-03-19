@@ -4,20 +4,17 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Mail, MapPin, Phone, ArrowRight, ChevronDown, CheckCircle2, Loader2 } from "lucide-react";
+import { countries } from "@/data/CountryCode";
+
 
 const Contact = () => {
   const { scrollY } = useScroll();
   const yText = useTransform(scrollY, [0, 500], [0, 200]);
   const opacityHero = useTransform(scrollY, [0, 400], [1, 0]);
 
-  const [activeService, setActiveService] = useState("");
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-
-  const servicesList = [
-    "Web Development", "Mobile App", "UI/UX Design", "AI Integration", "SEO / Marketing", "Other"
-  ];
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]); // Default USA
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,13 +23,13 @@ const Contact = () => {
 
     const formData = new FormData(e.currentTarget);
 
+    const fullPhone = `${selectedCountry.code} ${formData.get("phone")}`;
+
     const data = {
       name: formData.get("name"),
-      email: formData.get("email"),
-      service: activeService || "Not Specified",
-      company: formData.get("company") || "N/A",
-      timeline: formData.get("timeline") || "Not Specified",
-      details: formData.get("details"),
+      phone: fullPhone,
+      subject: formData.get("subject"),
+      message: formData.get("message"),
     };
 
     try {
@@ -45,7 +42,7 @@ const Contact = () => {
       if (response.ok) {
         setStatus("success");
         (e.target as HTMLFormElement).reset();
-        setActiveService("");
+        setSelectedCountry(countries[0]);
       } else {
         setStatus("error");
       }
@@ -136,7 +133,7 @@ const Contact = () => {
               <div className="space-y-6 md:space-y-8 pt-8 border-t border-white/[0.05]">
                 {[
                   { icon: <Mail />, label: "Direct Email", val: "contact@retnavia.com" },
-                  { icon: <Phone />, label: "Call Us", val: "+971 4 242 1375" },
+                  { icon: <Phone />, label: "Global Direct Line", val: "+1 (747) 217-7426" },
                   { icon: <MapPin />, label: "Headquarters", val: "Sheikh Zayed Road, Dubai" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4 md:gap-6 group cursor-pointer">
@@ -165,79 +162,97 @@ const Contact = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
                     <div className="space-y-2">
                       <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">Full Name</label>
-                      <input required type="text" name="name" placeholder="Name" className="w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-foreground focus:outline-none focus:ring-1 focus:ring-primary/40 focus:border-primary/40 transition-all placeholder:text-muted/50" />
+                      <input
+                        required
+                        type="text"
+                        name="name"
+                        placeholder="Full Name"
+                        className="w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-foreground focus:outline-none focus:ring-1 focus:ring-primary/40 focus:border-primary/40 transition-all placeholder:text-muted/50 autofill:bg-transparent"
+                      />
                     </div>
+
                     <div className="space-y-2">
-                      <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">Work Email</label>
-                      <input required type="email" name="email" placeholder="Email" className="w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-foreground focus:outline-none focus:ring-1 focus:ring-primary/40 focus:border-primary/40 transition-all placeholder:text-muted/50" />
-                    </div>
-                  </div>
+                      <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">
+                        Phone Number
+                      </label>
 
-                  <div className="space-y-3">
-                    <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">I'm interested in...</label>
-                    <div className="flex flex-wrap gap-2 md:gap-3">
-                      {servicesList.map((service) => (
-                        <button
-                          key={service}
-                          type="button"
-                          onClick={() => setActiveService(service)}
-                          className={`px-4 py-2 md:px-5 md:py-2.5 rounded-full text-[11px] md:text-sm font-medium transition-all duration-300 border flex items-center gap-2 ${activeService === service
-                            ? "bg-primary border-primary text-background shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)]"
-                            : "bg-white/[0.02] border-white/10 text-muted-foreground hover:border-primary/50 hover:text-foreground"
-                            }`}
-                        >
-                          {activeService === service && <CheckCircle2 size={14} />}
-                          {service}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                      <div className="flex items-center w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl focus-within:ring-1 focus-within:ring-primary/40 focus-within:border-primary/40 transition-all overflow-hidden group">
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                    <div className="space-y-2">
-                      <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">Company</label>
-                      <input type="text" name="company" placeholder="Website" className="w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-foreground focus:outline-none focus:ring-1 focus:ring-primary/40 focus:border-primary/40 transition-all placeholder:text-muted/50" />
-                    </div>
+                        <div className="relative shrink-0 border-r border-white/10">
+                          <select
+                            className="bg-transparent pl-4 pr-10 py-3.5 md:py-4 text-foreground text-sm appearance-none outline-none cursor-pointer w-full"
+                            onChange={(e) => {
+                              const country = countries.find((c) => c.code === e.target.value);
+                              if (country) setSelectedCountry(country);
+                            }}
+                          >
+                            {countries.map((c) => (
+                              <option key={c.code} value={c.code} className="bg-background text-foreground">
+                                {c.code} ({c.name})
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted group-hover:text-primary pointer-events-none transition-colors"
+                            size={14}
+                          />
+                        </div>
 
-                    <div className="space-y-2 relative">
-                      <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">Timeline</label>
-                      <div className="relative group">
-                        <select
-                          name="timeline"
-                          defaultValue=""
-                          className="w-full bg-white/[0.03] appearance-none border border-white/[0.05] rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-muted-foreground focus:text-foreground focus:outline-none focus:ring-1 focus:ring-primary/40 transition-all cursor-pointer"
-                        >
-                          <option value="" disabled className="bg-background">When to start?</option>
-                          <option value="asap" className="bg-background">ASAP</option>
-                          <option value="1-3-months" className="bg-background">1-3 Months</option>
-                          <option value="exploring" className="bg-background">Exploring</option>
-                        </select>
-                        <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-muted-foreground group-hover:text-foreground pointer-events-none transition-colors" size={16} />
+                        <input
+                          required
+                          name="phone"
+                          type="tel"
+                          placeholder={selectedCountry.placeholder}
+                          className="flex-1 bg-transparent px-5 py-3.5 md:py-4 text-foreground focus:outline-none placeholder:text-muted/20 autofill:bg-transparent"
+                        />
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">Project Details</label>
-                    <textarea required name="details" rows={4} placeholder="Your goals..." className="w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-foreground focus:outline-none focus:ring-1 focus:ring-primary/40 transition-all resize-none placeholder:text-muted/50"></textarea>
+                    <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">Subject</label>
+                    <input
+                      required
+                      type="text"
+                      name="subject"
+                      placeholder="How can we help you?"
+                      className="w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-foreground focus:outline-none focus:ring-1 focus:ring-primary/40 focus:border-primary/40 transition-all placeholder:text-muted/50 autofill:bg-transparent"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase ml-1">Message</label>
+                    <textarea
+                      required
+                      name="message"
+                      rows={5}
+                      placeholder="Write your message here..."
+                      className="w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl px-5 py-3.5 md:px-6 md:py-4 text-foreground focus:outline-none focus:ring-1 focus:ring-primary/40 focus:border-primary/40 transition-all resize-none placeholder:text-muted/50 autofill:bg-transparent"
+                    ></textarea>
                   </div>
 
                   {status === "success" && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-500 text-xs text-center font-medium">
-                      Inquiry sent successfully! We'll reach out soon.
+                      Message sent successfully! We'll get back to you shortly.
+                    </motion.div>
+                  )}
+
+                  {status === "error" && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-500 text-xs text-center font-medium">
+                      Something went wrong. Please try again.
                     </motion.div>
                   )}
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full group bg-primary text-background py-4 md:py-5 rounded-xl md:rounded-2xl font-bold transition-all duration-300 flex items-center justify-center gap-3 overflow-hidden relative disabled:opacity-70"
+                    className="w-full group bg-primary text-background py-4 md:py-5 rounded-xl md:rounded-2xl font-bold transition-all duration-300 flex items-center justify-center gap-3 overflow-hidden relative disabled:opacity-70 shadow-[0_0_20px_rgba(var(--primary-rgb),0.2)] hover:shadow-primary/40"
                   >
                     <span className="relative z-10 flex items-center gap-2 tracking-widest uppercase text-xs md:text-sm">
                       {isSubmitting ? (
                         <>Sending... <Loader2 size={18} className="animate-spin" /></>
                       ) : (
-                        <>Submit Request <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>
+                        <>Send Message <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>
                       )}
                     </span>
                     {!isSubmitting && <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>}

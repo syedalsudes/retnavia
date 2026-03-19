@@ -11,31 +11,29 @@ const supabase = createClient(
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, service, company, timeline, details } = body;
+    const { name, phone, subject, message } = body;
 
-    // 1. Save to Supabase
     const { error: dbError } = await supabase
-      .from('inquiries')
-      .insert([{ full_name: name, email, service, company, timeline, details }]);
+      .from('contact_inquiries')
+      .insert([{ name, phone, subject, message }]);
 
     if (dbError) throw dbError;
 
     await resend.emails.send({
-        from: "Retnavia Leads <onboarding@resend.dev>",
+        from: "Retnavia Contact <onboarding@resend.dev>",
         to: ["syedalsudeshussain@gmail.com"],
-        subject: `New Lead: ${name} - ${service}`,
+        subject: `New Message: ${subject}`,
         html: `
-            <h3>New Inquiry Details:</h3>
+            <h3>General Contact Inquiry:</h3>
             <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Service:</strong> ${service}</p>
-            <p><strong>Project Details:</strong> ${details}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Subject:</strong> ${subject}</p>
+            <p><strong>Message:</strong> ${message}</p>
         `
     });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.error("CRITICAL ERROR:", error);
     return NextResponse.json({ error: 'Failed' }, { status: 500 });
   }
 }

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, HelpCircle } from "lucide-react";
+import Link from "next/link";
 
 const faqs = [
   { 
@@ -96,9 +97,11 @@ const FAQ = () => {
             className="mt-12 p-6 rounded-2xl bg-overlay border border-border inline-block"
           >
             <p className="text-foreground text-sm font-medium">Still confused?</p>
-            <button className="mt-2 text-primary text-sm font-bold hover:text-primary-glow transition-colors flex items-center gap-2">
+            <Link href="/contact">
+              <button className="mt-2 text-primary text-sm font-bold hover:text-primary-glow transition-colors flex items-center gap-2">
                 Chat with our team <Plus size={14} />
-            </button>
+              </button>
+            </Link>
           </motion.div>
         </div>
 
