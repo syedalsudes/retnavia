@@ -178,32 +178,41 @@ const Contact = () => {
 
                       <div className="flex items-center w-full bg-white/[0.03] border border-white/[0.05] rounded-xl md:rounded-2xl focus-within:ring-1 focus-within:ring-primary/40 focus-within:border-primary/40 transition-all overflow-hidden group">
 
-                        <div className="relative shrink-0 border-r border-white/10">
+                        <div className="relative shrink-0 border-r border-white/10 w-[45%] flex items-center justify-center">
                           <select
-                            className="bg-transparent pl-4 pr-10 py-3.5 md:py-4 text-foreground text-sm appearance-none outline-none cursor-pointer w-full"
+                            className="bg-transparent w-full py-3.5 md:py-4 text-foreground text-xs font-bold appearance-none outline-none cursor-pointer h-full text-center"
+                            style={{ textAlignLast: "center" }}
                             onChange={(e) => {
                               const country = countries.find((c) => c.code === e.target.value);
                               if (country) setSelectedCountry(country);
                             }}
                           >
                             {countries.map((c) => (
-                              <option key={c.code} value={c.code} className="bg-background text-foreground">
-                                {c.code} ({c.name})
+                              <option key={c.code} value={c.code} className="bg-background text-foreground text-center">
+                                {c.name} {c.code}
                               </option>
                             ))}
                           </select>
+
+                          {/* Icon position adjusted */}
                           <ChevronDown
                             className="absolute right-3 top-1/2 -translate-y-1/2 text-muted group-hover:text-primary pointer-events-none transition-colors"
                             size={14}
                           />
                         </div>
 
+                        {/* Phone Input Area (55% Width) */}
                         <input
                           required
                           name="phone"
                           type="tel"
+                          maxLength={selectedCountry.length}
                           placeholder={selectedCountry.placeholder}
-                          className="flex-1 bg-transparent px-5 py-3.5 md:py-4 text-foreground focus:outline-none placeholder:text-muted/20 autofill:bg-transparent"
+                          onInput={(e) => {
+                            // Sirf numbers allow honge
+                            e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, "");
+                          }}
+                          className="w-[55%] bg-transparent px-5 py-3.5 md:py-4 text-foreground text-sm focus:outline-none placeholder:text-muted/20 autofill:bg-transparent"
                         />
                       </div>
                     </div>

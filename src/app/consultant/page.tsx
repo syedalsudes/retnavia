@@ -116,23 +116,25 @@ const ConsultantForm = () => {
 
                                     <div className="flex items-center w-full bg-transparent border border-white/[0.05] rounded-xl md:rounded-2xl focus-within:ring-1 focus-within:ring-primary/40 focus-within:border-primary/40 transition-all overflow-hidden group">
 
-                                        <div className="relative shrink-0 border-r border-white/10 w-[32%] md:w-[30%]">
+                                        <div className="relative shrink-0 border-r border-white/10 w-[32%] md:w-[30%] flex items-center justify-center">
                                             <select
-                                                className="bg-transparent w-full pl-3 pr-8 py-3.5 md:py-4 text-foreground text-xs font-bold appearance-none outline-none cursor-pointer h-full"
+                                                className="bg-transparent w-full py-3.5 md:py-4 text-foreground text-xs font-bold appearance-none outline-none cursor-pointer h-full text-center text-align-last-center"
+                                                style={{ textAlignLast: 'center' }} 
                                                 onChange={(e) => {
                                                     const country = countries.find((c) => c.code === e.target.value);
                                                     if (country) setSelectedCountry(country);
                                                 }}
                                             >
                                                 {countries.map((c) => (
-                                                    <option key={c.code} value={c.code} className="bg-background text-foreground">
+                                                    <option key={c.code} value={c.code} className="bg-background text-foreground text-center">
                                                         {c.name} {c.code}
                                                     </option>
                                                 ))}
                                             </select>
+
                                             <ChevronDown
-                                                className="absolute right-2 top-1/2 -translate-y-1/2 text-muted group-hover:text-primary pointer-events-none transition-colors"
-                                                size={12}
+                                                className="absolute right-1.5 top-1/2 -translate-y-1/2 text-muted group-hover:text-primary pointer-events-none transition-colors"
+                                                size={10}
                                             />
                                         </div>
 
@@ -140,7 +142,11 @@ const ConsultantForm = () => {
                                             required
                                             name="phone"
                                             type="tel"
+                                            maxLength={selectedCountry.length}
                                             placeholder={selectedCountry.placeholder}
+                                            onInput={(e) => {
+                                                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                                            }}
                                             className="flex-1 bg-transparent px-4 py-3.5 md:py-4 text-foreground text-sm focus:outline-none placeholder:text-muted/20 autofill:bg-transparent"
                                         />
                                     </div>
@@ -268,7 +274,6 @@ const ConsultantForm = () => {
                                 </motion.div>
                             )}
 
-                            {/* Error Message */}
                             {status === "error" && (
                                 <motion.div
                                     initial={{ opacity: 0, y: -10 }}
