@@ -1,57 +1,199 @@
 "use client";
 
-import React from "react";
-import { ArrowUpRight } from "lucide-react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import * as THREE from "three";
 
 const HeroSection = () => {
+  const canvasRef = useRef<HTMLDivElement>(null);
+
+  const STATS_DATA = [
+    { label: "Rating Stars", value: "4.7+" },
+    { label: "Satisfied Customers", value: "32K" },
+    { label: "Projects Delivered", value: "1200+" },
+  ];
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const container = canvasRef.current;
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
+    camera.position.z = 3.5;
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
+
+    const handleResize = () => {
+      if (!container) return;
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    };
+    window.addEventListener("resize", handleResize);
+
+    const geo = new THREE.IcosahedronGeometry(1.1, 1);
+    const wireMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.18 });
+    const wireMesh = new THREE.Mesh(geo, wireMat);
+    scene.add(wireMesh);
+
+    const solidMat = new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: 0xccccff, specular: 0xffffff, shininess: 90, transparent: true, opacity: 0.12 });
+    const solidMesh = new THREE.Mesh(geo, solidMat);
+    scene.add(solidMesh);
+
+    const coreGeo = new THREE.SphereGeometry(0.55, 32, 32);
+    const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
+    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    scene.add(coreMesh);
+
+    const ringGeo = new THREE.TorusGeometry(1.55, 0.012, 8, 120);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.55 });
+    const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+    ringMesh.rotation.x = Math.PI / 2.8;
+    scene.add(ringMesh);
+
+    const ring2Geo = new THREE.TorusGeometry(1.75, 0.007, 8, 120);
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.3 });
+    const ring2Mesh = new THREE.Mesh(ring2Geo, ring2Mat);
+    ring2Mesh.rotation.x = -Math.PI / 4;
+    ring2Mesh.rotation.y = Math.PI / 5;
+    scene.add(ring2Mesh);
+
+    const particlesGeo = new THREE.BufferGeometry();
+    const count = 180;
+    const positions = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const r = 1.9 + Math.random() * 0.9;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      positions[i * 3 + 2] = r * Math.cos(phi);
+    }
+    particlesGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const particlesMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.028, transparent: true, opacity: 0.85 });
+    const particles = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particles);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const pointLight1 = new THREE.PointLight(0xffffff, 3, 10);
+    pointLight1.position.set(3, 3, 3);
+    scene.add(pointLight1);
+    const pointLight2 = new THREE.PointLight(0x3b82f6, 2, 10);
+    pointLight2.position.set(-3, -2, 2);
+    scene.add(pointLight2);
+
+    let mouseX = 0, mouseY = 0;
+    const handleMouse = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      mouseY = -((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    };
+    window.addEventListener("mousemove", handleMouse);
+
+    let frame = 0;
+    let rafId: number;
+    const animate = () => {
+      frame++;
+      const t = frame * 0.008;
+      solidMesh.rotation.y = t * 0.4 + mouseX * 0.3;
+      solidMesh.rotation.x = t * 0.15 + mouseY * 0.2;
+      wireMesh.rotation.y = t * 0.4 + mouseX * 0.3;
+      wireMesh.rotation.x = t * 0.15 + mouseY * 0.2;
+      ringMesh.rotation.z = t * 0.3;
+      ring2Mesh.rotation.z = -t * 0.2;
+      particles.rotation.y = t * 0.06;
+      particles.rotation.x = t * 0.03;
+      const pulse = 0.9 + Math.sin(t * 2) * 0.12;
+      coreMesh.scale.setScalar(pulse);
+      (coreMat as THREE.MeshBasicMaterial).opacity = 0.12 + Math.sin(t * 2) * 0.08;
+      renderer.render(scene, camera);
+      rafId = requestAnimationFrame(animate);
+    };
+    rafId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("mousemove", handleMouse);
+      window.removeEventListener("resize", handleResize);
+      renderer.dispose();
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative h-screen w-full overflow-hidden flex flex-col justify-end items-start lg:items-center pb-12 md:pb-16">
+    <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-background py-20 lg:py-0">
       <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        autoPlay loop muted playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40"
       >
         <source src="/videos/bg.mp4" type="video/mp4" />
       </video>
 
-      <div className="relative z-10 w-full max-w-5xl px-6 md:px-12 lg:px-6 text-left lg:text-center">
-        
-        <h1 className="text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-3 md:mb-4 leading-tight">
-          Code That Defines
-          <span className="text-primary/90"> Tomorrow.</span>
-        </h1>
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-background/20 to-background/80 pointer-events-none" />
 
-        <p className="text-muted-foreground text-sm md:text-lg lg:text-xl font-light mb-8 md:mb-10 max-w-2xl lg:mx-auto opacity-90">
-          Next-gen technology solutions for brands ready to lead the digital revolution.
-        </p>
+      <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-0">
 
-        <div className="inline-flex items-center bg-overlay backdrop-blur-xl border border-border p-1 md:p-1.5 rounded-full shadow-[0_0_40px_rgba(0,0,0,0.3)] mb-4 md:mb-8">
-          <Link href="/consultant">
-            <button className="flex items-center gap-3 bg-foreground text-background pl-6 pr-2 py-2 rounded-full font-bold hover:bg-muted transition-all duration-300 group">
-              <span className="text-sm tracking-tight">Start Your Project</span>
+        <div className="flex-1 mt-16 text-center lg:text-left order-2 lg:order-1">
+          <h1 className="text-foreground font-black tracking-tight leading-[0.9] mb-6 uppercase"
+            style={{ fontSize: "clamp(2.5rem, 10vw, 5rem)" }}>
+            Build the <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-foreground via-foreground to-foreground/40">
+              Future.
+            </span>
+          </h1>
 
-              <div className="relative h-9 rounded-full overflow-hidden border-2 border-background/10 shadow-inner">
+          <p className="text-muted-foreground font-medium mb-8 max-w-lg mx-auto lg:mx-0 text-base md:text-lg leading-relaxed border-l-0 lg:border-l-2 border-primary/30 lg:pl-6">
+            We architect high-performance software and digital legacies for brands that refuse to settle for ordinary.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 mb-12">
+            <Link href="/consultant">
+              <button className="w-full sm:w-auto px-10 py-4 bg-foreground text-background font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(var(--foreground),0.2)]">
+                Start Project
+              </button>
+            </Link>
+
+            <Link href="/portfolio" className="group flex items-center gap-2 text-foreground font-semibold">
+              <span className="border-b-2 border-transparent group-hover:border-foreground transition-all duration-300">View Work</span>
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+
+
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10">
+            {STATS_DATA.map((stat, index) => (
+              <div key={index} className="flex flex-col">
+                <span className="text-lg md:text-2xl font-bold text-foreground whitespace-nowrap">
+                  {stat.value}
+                </span>
+
+                <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-muted-foreground font-semibold leading-tight mt-1">
+                  {stat.label}
+                </span>
               </div>
-            </button>
-          </Link>
-
-          <Link
-            href="/portfolio"
-            className="group flex items-center gap-1.5 text-foreground/90 text-[12px] md:text-sm font-semibold px-4 md:px-6 py-2 transition-all hover:text-foreground relative"
-          >
-            <div className="relative">
-              <span>See our work</span>
-              <div className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-foreground scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
-            </div>
-            <ArrowUpRight size={14} className="md:size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-background/90 to-transparent z-[1] pointer-events-none" />
+        <div className="relative flex-shrink-0 order-1 lg:order-2">
+          <div className="absolute inset-0 bg-secondary/20 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
+          <div
+            ref={canvasRef}
+            className="w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] relative z-10 mx-auto"
+          />
+        </div>
+
+      </div>
     </section>
   );
 };

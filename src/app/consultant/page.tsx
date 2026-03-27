@@ -5,12 +5,13 @@ import { ChevronDown, CheckCircle2, Loader2, MessageSquare, Calendar, Search, Ar
 import { motion, AnimatePresence } from "framer-motion";
 import { countries } from "@/data/CountryCode";
 
+
 const ConsultantForm = () => {
     const formRef = useRef<HTMLFormElement>(null);
     const [activeService, setActiveService] = useState("Web Development");
     const [timeOption, setTimeOption] = useState("Morning (9AM - 12PM)");
     const [customTime, setCustomTime] = useState("");
-    const [selectedCountry, setSelectedCountry] = useState(countries[0]); // Default USA
+    const [selectedCountry, setSelectedCountry] = useState(countries[0]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 

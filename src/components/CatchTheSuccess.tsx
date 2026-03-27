@@ -49,8 +49,8 @@ const CTA = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-muted-foreground text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light"
         >
-          Aapka vision aur hamari technical expertise—mil kar banate hain kuch behtareen.
-          Kya aap apne business ko agle level par le jaane ke liye tayyar hain?
+          Your vision meets our technical expertise—together, we build excellence. 
+          Ready to take your business to the next level?
         </motion.p>
 
         <motion.div

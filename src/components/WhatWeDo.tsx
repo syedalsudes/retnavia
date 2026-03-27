@@ -2,8 +2,15 @@
 
 import React from "react";
 import {
-  Code2, Figma, Smartphone, Cloud,
-  Palette, Megaphone, Cpu, Sparkles, Orbit
+  Code2,
+  Figma,
+  Smartphone,
+  Cloud,
+  Bot,
+  MessageSquare,
+  Users,
+  Palette,
+  Sparkles
 } from "lucide-react";
 
 const WhatWeDo = () => {
@@ -12,10 +19,10 @@ const WhatWeDo = () => {
     { name: "UI/UX Strategy", icon: <Figma size={16} />, color: "text-pink-500" },
     { name: "iOS & Android", icon: <Smartphone size={16} />, color: "text-green-400" },
     { name: "Cloud Infra", icon: <Cloud size={16} />, color: "text-cyan-400" },
+    { name: "Agentic AI", icon: <Bot size={16} />, color: "text-indigo-400" },
+    { name: "Custom Chatbot", icon: <MessageSquare size={16} />, color: "text-emerald-400" },
+    { name: "CRM", icon: <Users size={16} />, color: "text-amber-400" },
     { name: "Visual Design", icon: <Palette size={16} />, color: "text-orange-400" },
-    { name: "Growth Hacking", icon: <Megaphone size={16} />, color: "text-yellow-400" },
-    { name: "AI & Neural", icon: <Cpu size={16} />, color: "text-primary" },
-    { name: "Blockchain", icon: <Orbit size={16} />, color: "text-indigo-400" },
   ];
 
   return (

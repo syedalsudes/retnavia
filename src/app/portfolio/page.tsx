@@ -52,7 +52,7 @@ const portfolioItems = [
   },
 ];
 
-const filters = ["All", "Web", "App", "Graphics", "AI"];
+const filters = ["All", "Web","AI" , "App", "Branding/logo" ];
 
 const containerVariants = {
   hidden: { opacity: 0 },

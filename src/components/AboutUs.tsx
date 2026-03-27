@@ -11,7 +11,7 @@ const About = () => {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,30 +33,35 @@ const About = () => {
 
           <div className="space-y-6 text-muted text-lg md:text-xl font-light leading-relaxed max-w-xl">
             <p>
-              At <span className="text-foreground font-semibold">retnavia</span>, our mission is to bridge the gap between human 
-              imagination and technical execution. We don't just build products; we craft 
+              At <span className="text-foreground font-semibold">retnavia</span>, our mission is to bridge the gap between human
+              imagination and technical execution. We don't just build products; we craft
               experiences that resonate.
             </p>
             <p>
-              Our team of multidisciplinary experts thrives on complexity, turning 
+              Our team of multidisciplinary experts thrives on complexity, turning
               abstract ideas into high-performance digital ecosystems that scale.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16 pt-10 border-t border-white/[0.1]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 pt-8 border-t border-white/10">
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-3 text-foreground mb-2">
-                <Target size={20} className="text-primary" />
-                <span className="text-3xl font-bold tracking-tight">150+</span>
+              <div className="flex items-center gap-2 text-foreground">
+                <Target size={18} className="text-primary" />
+                <span className="font-semibold tracking-tight">Our Commitment</span>
               </div>
-              <p className="text-muted text-xs uppercase tracking-[0.2em]">Milestones Reached</p>
+              <p className="text-muted-foreground text-[13px] leading-relaxed max-w-[280px]">
+                Merging your vision with our tech to deliver <span className="text-foreground">100% satisfaction</span>.
+              </p>
             </div>
+
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-3 text-foreground mb-2">
-                <Zap size={20} className="text-primary" />
-                <span className="text-3xl font-bold tracking-tight">99.9%</span>
+              <div className="flex items-center gap-2 text-foreground">
+                <Zap size={18} className="text-primary" />
+                <span className="font-semibold tracking-tight">The Next Level</span>
               </div>
-              <p className="text-muted text-xs uppercase tracking-[0.2em]">Client Satisfaction</p>
+              <p className="text-muted-foreground text-[13px] leading-relaxed max-w-[280px]">
+                Ready to scale? We turn your ideas into high-performance digital reality.
+              </p>
             </div>
           </div>
         </motion.div>
@@ -70,10 +75,10 @@ const About = () => {
         >
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-glow/20 rounded-full blur-[100px]"></div>
           <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-secondary/10 rounded-full blur-[100px]"></div>
-          
+
           <div className="relative rounded-[2rem] overflow-hidden border border-border aspect-[4/5] md:aspect-[3/4] shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-            <Image 
-              src="/aboutsection.png" 
+            <Image
+              src="/aboutsection.png"
               alt="retnavia Team"
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-110"
