@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Anta } from "next/font/google"; 
 import "./globals.css";
 import MouseTrail from "@/components/MouseTrail";
+import { Analytics } from "@vercel/analytics/next"
 
 const anta = Anta({ 
   weight: '400', 
@@ -90,6 +91,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

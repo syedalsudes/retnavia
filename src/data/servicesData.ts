@@ -1,5 +1,3 @@
-// data/servicesData.ts
-
 export const servicesData = {
   "web-development": {
     title: "Web Development",
@@ -7,7 +5,7 @@ export const servicesData = {
     description: "We don't just build websites; we engineer digital ecosystems. From high-performance corporate portals to complex web architectures, our solutions are designed for zero-latency, unbreakable security, and maximum user engagement.",
     mainImage: "/servicesimages/webs.png",
     capabilities: ["Custom Web Applications", "Enterprise CMS", "Progressive Web Apps (PWA)", "API Development & Integration"],
-    techStack: ["Next.js", "React", "Node.js", "TypeScript", "AWS", "PostgreSQL"],
+    techStack: ["Next.js", "React", "Node.js", "TypeScript", "AWS", "PostgreSQL","Python","NestJS"," Many More"],
   },
   "ecommerce": {
     title: "Ecommerce Development",
