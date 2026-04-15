@@ -122,7 +122,7 @@ export const portfolioItems: ProjectDetail[] = [
     role: "Full Stack Engineer",
     liveUrl: "https://morelifeproject.com/",
 
-    listImage: "/portfolioimages/morelife-logo.png",
+    listImage: "/portfolioimages/morelifelogo.png",
     heroImage: "/portfolioimages/morelifehome.png",
     overview:
       "A secure, deeply personal digital legacy platform that allows users to create private profiles filled with stories, video messages, and family trees, which are safely stored and unlocked for loved ones after their passing.",
@@ -130,18 +130,18 @@ export const portfolioItems: ProjectDetail[] = [
     sections: [
       {
         type: "image-right",
-        title: "Secure Media & Profile Management",
-        description:
-          "Engineered a highly secure, private user dashboard allowing clients to upload sensitive media (videos and photos), write unlimited stories, and build interactive family trees with strict data privacy protocols.",
-        image: "/portfolioimages/morelife-dashboard.png",
-        alt: "MoreLife Secure Profile Dashboard",
-      },
-      {
-        type: "image-left",
         title: "Tiered Packages & Unlock Mechanism",
         description:
           "Developed a seamless purchasing flow for different legacy packages and implemented a secure, unique code-based authentication system allowing bereaved family members to recover and unlock profiles.",
-        image: "/portfolioimages/morelife-packages.png",
+        image: "/portfolioimages/morelifepackages.png",
+        alt: "MoreLife Packages and Profile Unlock Flow",
+      },
+      {
+        type: "image-left",
+        title: "Account Holder's Details",
+        description:
+          "Use this form to request access to a deceased loved one's profile. We take privacy seriously and will guide you through the necessary steps to verify your relationship and recover the account safely.",
+        image: "/portfolioimages/morelifeacc.png",
         alt: "MoreLife Packages and Profile Unlock Flow",
       },
     ],
@@ -154,7 +154,7 @@ export const portfolioItems: ProjectDetail[] = [
   {
     id: 4,
     slug: "marianna-pascal",
-    title: "Marianna Pascal Store",
+    title: "Marianna Pascal - Influence With Words",
     category: "Web",
     year: "2026",
     client: "Marianna Pascal",
@@ -162,23 +162,34 @@ export const portfolioItems: ProjectDetail[] = [
     liveUrl: "https://mariannapascal.com/",
 
     listImage: "/portfolioimages/marianna-logo.png",
-    heroImage: "/portfolioimages/marianna-hero.png",
+    heroImage: "/portfolioimages/mariannahome.png",
     overview:
-      "A personalized e-commerce and professional branding site seamlessly combining content delivery with product sales.",
+      "A professional branding and booking platform showcasing Marianna Pascal's corporate communication solutions, engaging keynotes, and measurable results for global enterprise clients.",
 
     sections: [
       {
         type: "image-left",
-        title: "Integrated Content & Commerce",
+        title: "Corporate Solutions & Keynotes",
         description:
-          "Built a unified platform where users can engage with the creator's professional content while seamlessly transitioning into product purchases.",
+          "Developed a streamlined platform to highlight tailored communication solutions, keynote topics, and transformational training modules to drive corporate bookings.",
         image: "/portfolioimages/marianna-content.png",
-        alt: "Marianna Pascal Content Platform",
+        alt: "Marianna Pascal Corporate Communication Platform",
       },
+      {
+        type: "image-right",
+        title: "Social Proof & Measurable Impact",
+        description:
+          "Integrated powerful testimonial sections, client success stories, and a diverse portfolio of global partner logos (like Amazon, Microsoft, and Intel) to build instant trust and authority.",
+        image: "/portfolioimages/marianna-testimonials.png",
+        alt: "Marianna Pascal Testimonials and Global Clients",
+      }
     ],
     techStack: ["Next.js", "React", "CMS Integration"],
-    metrics: [{ label: "Conversion", value: "Optimized" }],
-  },
+    metrics: [
+      { label: "Corporate Inquiries", value: "Optimized" },
+      { label: "Brand Authority", value: "Enhanced" }
+    ],
+},
 
   {
     id: 5,
