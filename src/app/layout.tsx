@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Anta } from "next/font/google"; 
+import { Anta } from "next/font/google";
 import "./globals.css";
 import MouseTrail from "@/components/MouseTrail";
 import { Analytics } from "@vercel/analytics/next"
 
-const anta = Anta({ 
-  weight: '400', 
+const anta = Anta({
+  weight: '400',
   subsets: ["latin"],
   variable: '--font-anta',
   display: 'swap',
@@ -23,17 +23,17 @@ export const metadata: Metadata = {
   },
   description: "Architecting the future of digital business. Retnavia delivers high-performance Web Engineering, Custom AI Solutions, and Enterprise ERP Systems for global brands in the USA, UAE, and EU.",
   keywords: [
-    "Software Engineering Agency Dubai", 
-    "Custom AI Solutions USA", 
-    "Enterprise Web Development", 
-    "Mobile App Studio London", 
-    "ERP Systems Saudi Arabia", 
+    "Software Engineering Agency Dubai",
+    "Custom AI Solutions USA",
+    "Enterprise Web Development",
+    "Mobile App Studio London",
+    "ERP Systems Saudi Arabia",
     "Retnavia Solutions",
     "Digital Product Design Agency"
   ],
   authors: [{ name: "Retnavia Team", url: "https://retnavia.com" }],
   creator: "Retnavia Solutions",
-  
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description: 'Transforming complex business ideas into scalable digital products. Expert AI, Web, and Mobile development.',
     images: [
       {
-        url: '/og-home.png', 
+        url: '/og-home.png',
         width: 1200,
         height: 630,
         alt: 'Retnavia Global Tech Agency',
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
-  
+
   robots: {
     index: true,
     follow: true,
@@ -87,6 +87,32 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${anta.variable} font-sans bg-background text-foreground`}>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Retnavia",
+              "url": "https://retnavia.com",
+              "logo": "https://retnavia.com/favicon.svg",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-747-217-7426",
+                "email": "info@retnavia.com",
+                "contactType": "Customer Service",
+                "areaServed": ["US", "AE", "Global"],
+                "availableLanguage": "English"
+              },
+              "sameAs": [
+                "https://www.facebook.com/retnaviasolutions",
+                "https://www.instagram.com/retnaviasolutions/"
+              ]
+            })
+          }}
+        />
+
         <MouseTrail />
         <Navbar />
         {children}
