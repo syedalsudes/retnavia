@@ -73,7 +73,7 @@ export const portfolioItems: ProjectDetail[] = [
   },
 
 
- {
+  {
     id: 2,
     slug: "reyes-coffee",
     title: "Reyes Coffee",
@@ -112,7 +112,7 @@ export const portfolioItems: ProjectDetail[] = [
       { label: "Performance", value: "98/100" },
     ],
   },
- {
+  {
     id: 3,
     slug: "more-life-project",
     title: "MoreLife - Digital Legacy Platform",
@@ -161,7 +161,7 @@ export const portfolioItems: ProjectDetail[] = [
     role: "Web Developer",
     liveUrl: "https://mariannapascal.com/",
 
-    listImage: "/portfolioimages/marianna-logo.png",
+    listImage: "/portfolioimages/mariannalogo.png",
     heroImage: "/portfolioimages/mariannahome.png",
     overview:
       "A professional branding and booking platform showcasing Marianna Pascal's corporate communication solutions, engaging keynotes, and measurable results for global enterprise clients.",
@@ -169,18 +169,18 @@ export const portfolioItems: ProjectDetail[] = [
     sections: [
       {
         type: "image-left",
-        title: "Corporate Solutions & Keynotes",
+        title: "USEFUL WORDS",
         description:
-          "Developed a streamlined platform to highlight tailored communication solutions, keynote topics, and transformational training modules to drive corporate bookings.",
-        image: "/portfolioimages/marianna-content.png",
-        alt: "Marianna Pascal Corporate Communication Platform",
+          "Integrated an e-commerce store to showcase and sell the 'Useful Words' book series, including individual books at $3.99 and a discounted 3-book bundle at $8.99.",
+        image: "/portfolioimages/mariannaecommerce.png",
+        alt: "Marianna Pascal Useful Words Book Store",
       },
       {
         type: "image-right",
         title: "Social Proof & Measurable Impact",
         description:
           "Integrated powerful testimonial sections, client success stories, and a diverse portfolio of global partner logos (like Amazon, Microsoft, and Intel) to build instant trust and authority.",
-        image: "/portfolioimages/marianna-testimonials.png",
+        image: "/portfolioimages/mariannatestimonials.png",
         alt: "Marianna Pascal Testimonials and Global Clients",
       }
     ],
@@ -189,7 +189,7 @@ export const portfolioItems: ProjectDetail[] = [
       { label: "Corporate Inquiries", value: "Optimized" },
       { label: "Brand Authority", value: "Enhanced" }
     ],
-},
+  },
 
   {
     id: 5,
