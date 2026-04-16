@@ -191,5 +191,123 @@ export const portfolioItems: ProjectDetail[] = [
     ],
   },
 
+  {
+    id: 5,
+    slug: "vitacare-nurses",
+    title: "VitaCare Nurses & Caregivers",
+    category: "Web",
+    year: "2026",
+    client: "VitaCare (Canada)",
+    role: "Lead Developer",
+    liveUrl: "https://vitacarenurses.com/",
 
+    listImage: "/portfolioimages/vitacarelogo.png",
+    heroImage: "/portfolioimages/vitacarehome.png",
+    overview:
+      "A comprehensive healthcare staffing platform designed to connect Canadian hospitals, long-term care facilities, and families with fully screened, licensed professionals. The platform seamlessly handles B2B staffing requests and B2C in-home care bookings.",
+    sections: [
+      {
+        type: "image-left",
+        title: "Committed to Dependable Care",
+        description:
+          "VitaCare Nurses & Caregivers is dedicated to connecting healthcare facilities and families with qualified, professional, and compassionate staff. We provide reliable staffing solutions for hospitals, long-term care homes, retirement communities, and in-home care services—ensuring quality support whenever it's needed.",
+        image: "/portfolioimages/vitacareabout.png",
+        alt: "VitaCare About Us & Compassionate Care",
+      },
+      {
+        type: "image-right",
+        title: "Reliable Staffing You Can Trust",
+        description:
+          "Structured the platform's UI to effectively communicate VitaCare's core service pillars. The layout emphasizes their commitment to 24/7 round-the-clock staffing coverage, the deployment of fully screened licensed professionals, and flexible, customized solutions for both healthcare institutions and families.",
+        image: "/portfolioimages/vitacarewhychoose.png",
+        alt: "Why Choose VitaCare - 24/7 Reliable Staffing Coverage",
+      },
+    ],
+
+    techStack: ["React", "Tailwind CSS", "Node.js"],
+    metrics: [
+      { label: "Client Satisfaction", value: "99%" },
+      { label: "Coverage", value: "Canada-Wide" },
+    ],
+  },
+  {
+    id: 6,
+    slug: "merchfloww-bpo",
+    title: "MerchFloww - BPO Custom Software",
+    category: "App",
+    year: "2026",
+    client: "Confidential BPO (Karachi)",
+    role: "Full Stack Developer",
+    liveUrl: "https://merchfloww.vercel.app/",
+
+    listImage: "/portfolioimages/merchflowwlogo.png",
+    heroImage: "/portfolioimages/merchflowwhome.png",
+    overview:
+      "A robust internal management and workflow automation software built specifically to handle the high-volume operational needs of a modern BPO agency.",
+
+    sections: [
+      {
+        type: "image-right",
+        title: "Structured Onboarding System",
+        description:
+          "Built a multi-step onboarding pipeline enabling merchants to securely submit business information and KYC documents. Integrated real-time validation and cloud storage to ensure data accuracy and reliability.",
+        image: "/portfolioimages/merchflowwdashform.png",
+        alt: "Merchant Onboarding Form",
+      },
+      {
+        type: "image-left",
+        title: "Admin Review & Approval System",
+        description:
+          "Developed an internal admin dashboard for reviewing and approving merchant applications. The system includes notification triggers for new submissions, improving operational efficiency.",
+        image: "/portfolioimages/merchflowwdashboard.png",
+        alt: "Admin Approval Dashboard",
+      },
+    ],
+
+    techStack: ["Next.js", "PostgreSQL", "Tailwind CSS", "Prisma"],
+    metrics: [
+      { label: "Efficiency Boost", value: "40%" },
+      { label: "Deployment", value: "Vercel" },
+    ],
+  },
+  {
+    id: 7,
+    slug: "morgy-real-estate",
+    title: "Morgy - Dubai Real Estate",
+    category: "Web",
+    year: "2026",
+    client: "Lycan Solutions",
+    role: "Frontend Engineer",
+    liveUrl: "https://lycansolutions.com/morgy/",
+
+    listImage: "/portfolioimages/morgylogo.png",
+    heroImage: "/portfolioimages/morgyhome.png",
+    overview:
+      "An upscale property listing and real estate portal targeting the competitive Dubai market, focusing on high-quality property showcases and lead generation.",
+
+    sections: [
+      {
+        type: "image-left",
+        title: "Strategic Corporate Advisory Interface",
+        description:
+          "Engineered a professional, corporate layout to effectively communicate executive search and workforce solutions. The UI is structured to highlight their 20+ years of Middle East leadership experience, clearly presenting their expertise and trusted advisory approach for Dubai's premium B2B sectors.",
+        image: "/portfolioimages/morgyabout.png",
+        alt: "morgyabout",
+      },
+      {
+        type: "image-right",
+        title: "Dynamic Service Offerings Interface",
+        description:
+          "Designed a clean, card-based services grid to present complex HR solutions with absolute clarity. Seamlessly integrated the brand's distinct purple aesthetic to highlight core offerings like Talent Search and Emiratisation, creating an intuitive and engaging user journey specifically tailored for UAE-based corporate clients.",
+        image: "/portfolioimages/morgyservices.png",
+        alt: "MM People Advisory - Workforce Solutions and Emiratisation Services",
+      },
+    ],
+
+    techStack: ["Next.js", "React", "Tailwind CSS"],
+    metrics: [
+      { label: "Market", value: "UAE / Dubai" },
+      { label: "Performance", value: "Highly Optimized" },
+    ],
+  }
 ];
