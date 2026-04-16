@@ -6,7 +6,7 @@ import Link from "next/link";
 import { portfolioItems } from "@/data/portfolioData";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 
-const filters = ["All", "Web", "AI", "App", "Graphics"];
+const filters = ["All", "Web", "App", "Graphics"];
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
