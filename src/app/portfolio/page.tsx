@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { portfolioItems } from "@/data/portfolioData";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import GraphicsSection from "@/components/GraphicsSection"; 
 
 const filters = ["All", "Web", "App", "Graphics"];
 
@@ -22,6 +23,7 @@ const ModernPortfolioPage = () => {
 
   return (
     <main className="bg-background min-h-screen text-foreground pb-32 selection:bg-primary/30 font-sans">
+      
       <section className="relative h-[90vh] md:h-screen mb-10 w-full flex items-center justify-center overflow-hidden bg-background">
         <div className="absolute inset-0 z-0">
           <Image
@@ -88,14 +90,11 @@ const ModernPortfolioPage = () => {
                 {isActive && (
                   <motion.div
                     layoutId="activeFilter"
-                    className="absolute inset-0 bg-foreground" 
+                    className="absolute inset-0 bg-foreground"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-
-                <span className={`relative z-10 transition-colors duration-300 ${
-                  isActive ? "text-background" : "text-muted-foreground group-hover:text-foreground"
-                }`}>
+                <span className={`relative z-10 transition-colors duration-300 ${isActive ? "text-background" : "text-muted-foreground group-hover:text-foreground"}`}>
                   {f}
                 </span>
               </button>
@@ -104,43 +103,52 @@ const ModernPortfolioPage = () => {
         </motion.div>
       </div>
 
-      <section className="max-w-7xl mx-auto space-y-40 px-6">
-        <AnimatePresence mode="wait">
-          {filteredItems.map((item, index) => (
-            <motion.div key={item.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={itemVariants}
-              className={`flex flex-col gap-20 items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+      <section className="max-w-7xl mx-auto px-6">
+        {activeFilter === "Graphics" ? (
+          
+          <GraphicsSection />
+          
+        ) : (
+          
+          <div className="space-y-40">
+            <AnimatePresence mode="wait">
+              {filteredItems.map((item, index) => (
+                <motion.div key={item.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={itemVariants}
+                  className={`flex flex-col gap-20 items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
 
-              <div className="flex-1 space-y-6">
-                <div className="flex items-center gap-4 text-xs font-mono text-primary">
-                  <span className="border border-border px-3 py-1 rounded-full uppercase">{item.category}</span>
-                  <span className="opacity-100">{item.year}</span>
-                </div>
-                <h2 className="text-4xl md:text-6xl font-light tracking-tight">{item.title}</h2>
-                <p className="text-muted-foreground leading-relaxed max-w-lg">{item.overview}</p>
-                <div className="flex flex-wrap gap-2">
-                  {item.techStack.map(t => <span key={t} className="text-[10px] bg-white/5 px-3 py-1 rounded-md border border-white/10">{t}</span>)}
-                </div>
+                  <div className="flex-1 space-y-6">
+                    <div className="flex items-center gap-4 text-xs font-mono text-primary">
+                      <span className="border border-border px-3 py-1 rounded-full uppercase">{item.category}</span>
+                      <span className="opacity-100">{item.year}</span>
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-light tracking-tight">{item.title}</h2>
+                    <p className="text-muted-foreground leading-relaxed max-w-lg">{item.overview}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {item.techStack.map(t => <span key={t} className="text-[10px] bg-white/5 px-3 py-1 rounded-md border border-white/10">{t}</span>)}
+                    </div>
 
-                <Link href={`/portfolio/${item.slug}`}>
-                  <motion.div whileHover={{ x: 10 }} className="pt-8 flex items-center gap-3 text-xs font-bold uppercase tracking-widest cursor-pointer group">
-                    <div className="w-10 h-[1px] bg-foreground group-hover:bg-primary" />
-                    <span>View Case Study</span>
-                    <span>→</span>
-                  </motion.div>
-                </Link>
-              </div>
-              <div className="flex-1 w-full aspect-video md:h-[500px] relative rounded-3xl overflow-hidden border border-foreground/10 group bg-background">
-                <Image
-                  src={item.listImage}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+                    <Link href={`/portfolio/${item.slug}`}>
+                      <motion.div whileHover={{ x: 10 }} className="pt-8 flex items-center gap-3 text-xs font-bold uppercase tracking-widest cursor-pointer group">
+                        <div className="w-10 h-[1px] bg-foreground group-hover:bg-primary" />
+                        <span>View Case Study</span>
+                        <span>→</span>
+                      </motion.div>
+                    </Link>
+                  </div>
+                  <div className="flex-1 w-full aspect-video md:h-[500px] relative rounded-3xl overflow-hidden border border-foreground/10 group bg-background">
+                    <Image
+                      src={item.listImage}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
       </section>
     </main>
   );

@@ -134,7 +134,6 @@ const Contact = () => {
                 {[
                   { icon: <Mail />, label: "Direct Email", val: "contact@retnavia.com" },
                   { icon: <Phone />, label: "Global Direct Line", val: "+1 (747) 217-7426" },
-                  { icon: <MapPin />, label: "Headquarters", val: "Sheikh Zayed Road, Dubai" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4 md:gap-6 group cursor-pointer">
                     <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-2xl bg-overlay border border-white/[0.05] flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
