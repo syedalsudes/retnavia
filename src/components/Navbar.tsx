@@ -94,12 +94,12 @@ const Navbar = () => {
             </button>
           </Link>
           <div className="hidden md:flex items-center gap-3">
-            <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
+            {/* <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
               <div className="p-2.5 bg-overlay text-foreground z-10"><Phone size={18} /></div>
               <div className="max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-5 group-hover:pl-2 transition-all duration-500 overflow-hidden whitespace-nowrap">
                 <span className="text-foreground text-xs font-bold tracking-tighter">+1 (747) 217-7426</span>
               </div>
-            </div>
+            </div> */}
 
             <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
               <div className="p-2.5 bg-overlay text-foreground z-10"><Mail size={18} /></div>
