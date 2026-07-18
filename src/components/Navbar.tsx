@@ -94,19 +94,28 @@ const Navbar = () => {
             </button>
           </Link>
           <div className="hidden md:flex items-center gap-3">
-            {/* <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
+            
+            {/* Working Phone Dropdown/Link */}
+            <a 
+              href="tel:+16673474637" 
+              className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10 transition-colors hover:border-primary/50"
+            >
               <div className="p-2.5 bg-overlay text-foreground z-10"><Phone size={18} /></div>
               <div className="max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-5 group-hover:pl-2 transition-all duration-500 overflow-hidden whitespace-nowrap">
-                <span className="text-foreground text-xs font-bold tracking-tighter">+1 (747) 217-7426</span>
+                <span className="text-foreground text-xs font-bold tracking-tighter">+1 (667) 347-4637</span>
               </div>
-            </div> */}
+            </a>
 
-            <div className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10">
+            {/* Working Mail Dropdown/Link */}
+            <a 
+              href="mailto:info@retnavia.com" 
+              className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10 transition-colors hover:border-primary/50"
+            >
               <div className="p-2.5 bg-overlay text-foreground z-10"><Mail size={18} /></div>
               <div className="max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-5 group-hover:pl-2 transition-all duration-500 overflow-hidden whitespace-nowrap">
                 <span className="text-foreground text-xs font-bold tracking-tighter">info@retnavia.com</span>
               </div>
-            </div>
+            </a>
           </div>
 
           <button
@@ -232,10 +241,15 @@ const Navbar = () => {
               )}
             </AnimatePresence>
 
+            {/* Mobile Menu Footer Contact Info */}
             <div className="mt-auto pt-10 flex flex-col gap-4">
               <span className="text-muted-foreground text-sm uppercase tracking-widest">Get in touch</span>
-              <a href="mailto:hello@retnavia.com" className="text-foreground text-lg font-medium">hello@retnavia.com</a>
-              <a href="tel:+97142421375" className="text-foreground text-lg font-medium">+971 4 242 1375</a>
+              <a href="mailto:info@retnavia.com" className="text-foreground text-lg font-medium hover:text-primary transition-colors">
+                info@retnavia.com
+              </a>
+              <a href="tel:+16673474637" className="text-foreground text-lg font-medium hover:text-primary transition-colors">
+                +1 (667) 347-4637
+              </a>
             </div>
           </motion.div>
         )}

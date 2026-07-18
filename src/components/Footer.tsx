@@ -31,11 +31,11 @@ const Footer = () => {
       link: "https://www.facebook.com/retnaviasolutions",
       colorClass: "hover:bg-[#1877F2]/10 hover:text-[#1877F2] hover:border-[#1877F2]/30"
     },
-    // {
-    //   icon: <MessageCircle size={18} />,
-    //   link: "https://wa.me/17472177426",
-    //   colorClass: "hover:bg-[#25D366]/10 hover:text-[#25D366] hover:border-[#25D366]/30"
-    // },
+    {
+      icon: <MessageCircle size={18} />,
+      link: "https://wa.me/16673474637",
+      colorClass: "hover:bg-[#25D366]/10 hover:text-[#25D366] hover:border-[#25D366]/30"
+    },
     {
       icon: <Mail size={18} />,
       link: "mailto:info@retnavia.com",

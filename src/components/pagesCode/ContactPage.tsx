@@ -133,7 +133,7 @@ const Contact = () => {
               <div className="space-y-6 md:space-y-8 pt-8 border-t border-white/[0.05]">
                 {[
                   { icon: <Mail />, label: "Direct Email", val: "contact@retnavia.com" },
-                  // { icon: <Phone />, label: "Global Direct Line", val: "+1 (747) 217-7426" },
+                  { icon: <Phone />, label: "Global Direct Line", val: "+1 (667) 3474637" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4 md:gap-6 group cursor-pointer">
                     <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-2xl bg-overlay border border-white/[0.05] flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
