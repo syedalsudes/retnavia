@@ -200,7 +200,7 @@ const ModernPortfolioPage = () => {
                           rel="noopener noreferrer"
                           className="flex-1"
                         >
-                          <button className="w-full py-3 rounded-full text-[10px] font-black uppercase tracking-[0.15em] border border-border text-foreground hover:bg-gradient-to-r hover:from-primary-glow hover:to-secondary hover:text-foreground hover:border-transparent transition-all duration-300 transform active:scale-95 shadow-sm">
+                          <button className="w-full py-3 rounded-full text-[10px] font-black uppercase tracking-[0.15em] border border-primary text-foreground hover:bg-gradient-to-r hover:from-primary-glow hover:to-secondary hover:text-foreground hover:border-transparent transition-all duration-300 transform active:scale-95 shadow-sm">
                             Live Preview
                           </button>
                         </a>

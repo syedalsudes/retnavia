@@ -7,44 +7,20 @@ import Link from "next/link";
 
 const faqs = [
   { 
-    q: "How long will it take to launch my project?", 
-    a: "Usually, a standard project takes 4 to 12 weeks. We follow an agile process to ensure you get a functional 'Version 1' as quickly as possible without compromising quality." 
+    q: "How long will it take to launch my SaaS product?", 
+    a: "Usually, a standard SaaS MVP takes 6 to 12 weeks depending on complexity. We follow an agile process to ensure you get a functional 'Version 1' in the market quickly, without compromising on quality or scalability." 
   },
   { 
-    q: "How much will my project cost?", 
-    a: "Pricing depends on the features and complexity. We offer both fixed-price packages for defined scopes and flexible monthly models for evolving projects." 
+    q: "How much will my SaaS project cost?", 
+    a: "Pricing depends on the features, integrations, and complexity of your product. We offer fixed-price packages for a defined MVP scope, and flexible monthly retainers for products that need continuous iteration post-launch." 
   },
   { 
-    q: "Will my website/app look good on mobile phones?", 
-    a: "100%. We follow a 'Mobile-First' approach, ensuring your digital product looks stunning and works smoothly on every screen size, from iPhones to large monitors." 
+    q: "Will my SaaS scale as my user base grows?", 
+    a: "Yes. We build on modern, cloud-native architecture (like Next.js, serverless, and auto-scaling infra) from day one, so your platform can handle growth from 10 users to 10,000+ without a costly rebuild." 
   },
   { 
-    q: "I have a slow existing site. Can you make it faster?", 
-    a: "Yes, we specialize in modernizing legacy systems using Next.js and optimized cloud infra. We focus on achieving 90+ Google PageSpeed scores to improve your user experience." 
-  },
-  { 
-    q: "Who will own the source code after completion?", 
-    a: "You do. Once the final payment is cleared, you have full 100% ownership of the source code, intellectual property, and all digital assets." 
-  },
-  { 
-    q: "How will I know what's happening with my project?", 
-    a: "Transparency is our priority. We use Slack for daily chat, Jira for task tracking, and schedule weekly Zoom demos so you can see the progress in real-time." 
-  },
-  { 
-    q: "Can you help my business show up on Google (SEO)?", 
-    a: "Absolutely. We don't just code; we build for growth. Every project follows technical SEO best practices (SSR, Meta Tags, Schema) to help you rank higher from day one." 
-  },
-  { 
-    q: "What happens if something breaks after the launch?", 
-    a: "We don't just 'launch and leave.' We provide comprehensive post-launch support and maintenance packages to keep your platform secure and updated as your business grows." 
-  },
-  { 
-    q: "Can you integrate my existing tools (Payment, CRM)?", 
-    a: "Yes, we can seamlessly integrate any third-party API, including payment gateways (Stripe, PayPal), CRMs (HubSpot, Salesforce), or custom business tools." 
-  },
-  { 
-    q: "Is my data and my customers' data safe with you?", 
-    a: "Security is built into our code. We implement industry-standard encryption, secure API protocols, and regular audits to protect your business from any vulnerabilities." 
+    q: "Who will own the source code and IP after completion?", 
+    a: "You do — 100%. Once the final payment is cleared, you get full ownership of the source code, intellectual property, and all digital assets, with no hidden licensing restrictions." 
   }
 ];
 
@@ -55,7 +31,7 @@ const FAQ = () => {
     <section className="bg-background py-32 px-6 md:px-12 relative overflow-hidden">
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary-glow/10 rounded-full blur-[120px] pointer-events-none"></div>
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 lg:items-start">
         
         <div className="lg:sticky lg:top-40 h-fit">
           <motion.div 
@@ -109,7 +85,7 @@ const FAQ = () => {
           <div className="absolute -inset-1 bg-gradient-to-b from-primary/20 to-transparent rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
           
           <div className="relative bg-background/80 backdrop-blur-xl border border-border rounded-[2rem] overflow-hidden shadow-2xl">
-            <div className="h-[650px] overflow-y-auto p-8 custom-scrollbar">
+            <div className="p-8">
               <div className="space-y-3">
                 {faqs.map((faq, index) => (
                   <motion.div 
@@ -119,7 +95,7 @@ const FAQ = () => {
                     transition={{ delay: index * 0.05 }}
                     className={`rounded-2xl border transition-all duration-300 ${
                       openIndex === index 
-                        ? 'bg-border border-border/50 shadow-inner' 
+                        ? 'bg-transparent border-border shadow-inner' 
                         : 'bg-transparent border-border hover:border-border/50'
                     }`}
                   >
