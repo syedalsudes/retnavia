@@ -6,22 +6,22 @@ import { Plus, HelpCircle } from "lucide-react";
 import Link from "next/link";
 
 const faqs = [
-  { 
-    q: "How long will it take to launch my SaaS product?", 
-    a: "Usually, a standard SaaS MVP takes 6 to 12 weeks depending on complexity. We follow an agile process to ensure you get a functional 'Version 1' in the market quickly, without compromising on quality or scalability." 
-  },
-  { 
-    q: "How much will my SaaS project cost?", 
-    a: "Pricing depends on the features, integrations, and complexity of your product. We offer fixed-price packages for a defined MVP scope, and flexible monthly retainers for products that need continuous iteration post-launch." 
-  },
-  { 
-    q: "Will my SaaS scale as my user base grows?", 
-    a: "Yes. We build on modern, cloud-native architecture (like Next.js, serverless, and auto-scaling infra) from day one, so your platform can handle growth from 10 users to 10,000+ without a costly rebuild." 
-  },
-  { 
-    q: "Who will own the source code and IP after completion?", 
-    a: "You do — 100%. Once the final payment is cleared, you get full ownership of the source code, intellectual property, and all digital assets, with no hidden licensing restrictions." 
-  }
+  {
+  q: "What tech stack do you use for web app development?",
+  a: "We primarily build with Next.js, React, and Node.js on the frontend and backend, paired with PostgreSQL or MongoDB depending on your data needs. For infra, we use serverless platforms like Vercel or AWS, ensuring your app stays fast, secure, and easy to maintain long-term."
+},
+{
+  q: "Do you provide post-launch support and maintenance?",
+  a: "Yes. Every project includes a support window post-launch to fix any bugs or issues. After that, we offer monthly maintenance retainers covering bug fixes, security updates, performance monitoring, and feature additions as your product evolves."
+},
+{
+  q: "Can you integrate third-party APIs and tools (payments, CRM, etc.)?",
+  a: "Absolutely. We regularly integrate payment gateways (Stripe, PayPal), CRMs (HubSpot, Salesforce), authentication providers (Auth0, Firebase), and other third-party APIs based on your specific business workflow requirements."
+},
+{
+  q: "What is your development process and how do you keep me updated?",
+  a: "We follow an agile sprint-based process with weekly progress calls or async updates via Slack/Notion. You'll have access to a staging environment throughout development, so you can review and give feedback at every milestone before final delivery."
+},
 ];
 
 const FAQ = () => {
