@@ -90,7 +90,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2 md:gap-4">
           <Link href="/consultant">
             <button className="hidden sm:block bg-gradient-to-r from-primary-glow to-secondary text-foreground px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold hover:scale-105 transition-transform active:scale-95 shadow-lg uppercase tracking-wide">
-              Get a Consultant
+              Get a Consultantation
             </button>
           </Link>
           <div className="hidden md:flex items-center gap-3">

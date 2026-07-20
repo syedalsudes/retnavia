@@ -15,13 +15,10 @@ export default function Home() {
         <HeroSection />
       </div>
 
-      <section className="sticky top-0 z-30 min-h-screen bg-background shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
         <ScrollReveal>
           <WhatWeDo />
         </ScrollReveal>
-      </section>
 
-      <div className="relative z-40 bg-background">
         <ScrollReveal>
           <OurWork />
         </ScrollReveal>
@@ -37,7 +34,6 @@ export default function Home() {
         <ScrollReveal>
           <CTA />
         </ScrollReveal>
-      </div>
 
     </main>
   );
