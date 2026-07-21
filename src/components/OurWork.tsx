@@ -146,7 +146,7 @@ const OurServices = () => {
               <motion.div key={index} variants={itemVariants}>
                 <Link
                   href={item.url}
-                  className="group relative bg-overlay hover:bg-white/[0.05] backdrop-blur-xl border border-border hover:border-primary/50 rounded-3xl p-8 pt-12 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary-glow/10 flex flex-col justify-between h-full block"
+                  className="group relative bg-overlay hover:bg-white/[0.05] backdrop-blur-xl border border-border hover:border-primary/50 rounded-3xl p-8 pt-12 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary-glow/10 flex flex-col justify-between h-full"
                 >
                   {/* Custom Gradient Accent Overlay on Hover */}
                   <div className={`absolute inset-0 bg-gradient-to-b ${item.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none`} />

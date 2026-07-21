@@ -5,6 +5,7 @@ import { Anta } from "next/font/google";
 import "./globals.css";
 import MouseTrail from "@/components/MouseTrail";
 import { Analytics } from "@vercel/analytics/next"
+import ChatWidget from "@/components/ChatWidget";
 
 const anta = Anta({
   weight: '400',
@@ -115,6 +116,7 @@ export default function RootLayout({
 
         <MouseTrail />
         <Navbar />
+        <ChatWidget />
         {children}
         <Footer />
         <Analytics />
