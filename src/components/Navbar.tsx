@@ -96,7 +96,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-3">
             
             {/* Working Phone Dropdown/Link */}
-            <a 
+            {/* <a 
               href="tel:+16673474637" 
               className="relative flex items-center bg-overlay rounded-full border border-border cursor-pointer overflow-hidden group h-10 transition-colors hover:border-primary/50"
             >
@@ -104,7 +104,7 @@ const Navbar = () => {
               <div className="max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-5 group-hover:pl-2 transition-all duration-500 overflow-hidden whitespace-nowrap">
                 <span className="text-foreground text-xs font-bold tracking-tighter">+1 (667) 347-4637</span>
               </div>
-            </a>
+            </a> */}
 
             {/* Working Mail Dropdown/Link */}
             <a 
@@ -247,9 +247,9 @@ const Navbar = () => {
               <a href="mailto:info@retnavia.com" className="text-foreground text-lg font-medium hover:text-primary transition-colors">
                 info@retnavia.com
               </a>
-              <a href="tel:+16673474637" className="text-foreground text-lg font-medium hover:text-primary transition-colors">
+              {/* <a href="tel:+16673474637" className="text-foreground text-lg font-medium hover:text-primary transition-colors">
                 +1 (667) 347-4637
-              </a>
+              </a> */}
             </div>
           </motion.div>
         )}
