@@ -11,24 +11,29 @@ const supabase = createClient(
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, subject, message } = body;
+    const { name, email, phone, subject, message } = body;
 
+    // Database Record Entry
     const { error: dbError } = await supabase
       .from('contact_inquiries')
-      .insert([{ name, phone, subject, message }]);
+      .insert([{ name, email, phone, subject, message }]);
 
     if (dbError) throw dbError;
 
+    // Resend Email Notification
     await resend.emails.send({
-        from: "Retnavia Contact <onboarding@resend.dev>",
-        to: ["syedalsudeshussain@gmail.com"],
+        from: "Retnavia Contact <info@retnavia.com>",
+        to: ["Retnavia.Operations@gmail.com"],
+        replyTo: email, // Changed from reply_to to replyTo
         subject: `New Message: ${subject}`,
         html: `
             <h3>General Contact Inquiry:</h3>
             <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone}</p>
             <p><strong>Subject:</strong> ${subject}</p>
-            <p><strong>Message:</strong> ${message}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message}</p>
         `
     });
 

@@ -30,16 +30,19 @@ export async function POST(req: Request) {
     if (dbError) throw dbError;
 
     await resend.emails.send({
-        from: "Retnavia Bookings <onboarding@resend.dev>",
-        to: ["syedalsudeshussain@gmail.com"],
+        from: "Retnavia Bookings <info@retnavia.com>",
+        to: ["Retnavia.Operations@gmail.com"],
+        replyTo: email,
         subject: `Consultation Request: ${name} - ${service}`,
         html: `
             <h3>Booking Details:</h3>
             <p><strong>Client:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Company:</strong> ${company || 'N/A'}</p>
             <p><strong>Service:</strong> ${service}</p>
             <p><strong>Schedule:</strong> ${date} at ${preferredTime}</p>
-            <p><strong>Project:</strong> ${details}</p>
+            <p><strong>Project Details:</strong> ${details}</p>
             <p><strong>Found via:</strong> ${discovery}</p>
         `
     });
